@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<AnchorPane fx:id="root"  prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeFormController">
+   <children>
+      <ImageView fitHeight="736.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/bb80728cb8cb030a872d6945fd39bcec.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="59.0" layoutX="64.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-back-button.gif" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" layoutX="42.0" layoutY="28.0" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back" />
+   </children>
+
+</AnchorPane>

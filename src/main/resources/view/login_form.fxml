@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="740.0" fitWidth="1158.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../assets/bb80728cb8cb030a872d6945fd39bcec.jpg" />
+      </ImageView>
+      <ImageView fitHeight="627.0" fitWidth="498.0" layoutX="362.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/8a3e10ef9d96b0dbcae50c929b7e1dbd.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="526.0" layoutY="149.0" prefHeight="72.0" prefWidth="133.0" text="Ride">
+         <font>
+            <Font name="Arial Bold Italic" size="57.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtUsername" layoutX="465.0" layoutY="276.0" prefHeight="59.0" prefWidth="254.0" promptText="Username">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="444.0" layoutY="510.0" onAction="#btnOnActionLogin" prefHeight="59.0" prefWidth="254.0" ripplerFill="#5c81e8" text="Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Nova Cond Light Italic" size="27.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="71.0" fitWidth="55.0" layoutX="410.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-access-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="55.0" layoutX="410.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-login-as-user-60.png" />
+         </image>
+      </ImageView>
+      <JFXPasswordField fx:id="txtPassword" layoutX="465.0" layoutY="397.0" onAction="#txtOnActionLogin" prefHeight="59.0" prefWidth="254.0" promptText="Password">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </JFXPasswordField>
+      <ImageView fitHeight="79.0" fitWidth="89.0" layoutX="444.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-bullet-train-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="55.0" layoutX="465.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-login-50.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="497.0" layoutY="577.0" onAction="#btnOnActionForgot" text="Forgot Password ? Click Me ! " />
+   </children>
+
+</AnchorPane>

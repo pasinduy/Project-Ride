@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PassengerFormController">
+   <children>
+      <ImageView fitHeight="735.0" fitWidth="1159.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/bb80728cb8cb030a872d6945fd39bcec.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="59.0" layoutX="64.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8-back-button.gif" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" layoutX="42.0" layoutY="28.0" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back" />
+      <Label layoutX="489.0" layoutY="42.0" prefHeight="53.0" prefWidth="182.0" text="Passengers">
+         <font>
+            <Font name="System Bold" size="33.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtId" layoutX="282.0" layoutY="144.0" onAction="#txtOnActionSearch" prefHeight="38.0" prefWidth="182.0" promptText="Passenger ID" />
+      <JFXTextField fx:id="txtAge" layoutX="282.0" layoutY="243.0" prefHeight="38.0" prefWidth="182.0" promptText="Age" />
+      <JFXTextField fx:id="txtName" layoutX="688.0" layoutY="144.0" prefHeight="38.0" prefWidth="182.0" promptText="Name" />
+      <JFXTextField fx:id="txtGender" layoutX="688.0" layoutY="243.0" prefHeight="38.0" prefWidth="182.0" promptText="Gender" />
+      <JFXTextField fx:id="txtAddress" layoutX="282.0" layoutY="343.0" prefHeight="38.0" prefWidth="182.0" promptText="Address" />
+      <JFXTextField fx:id="txtContact" layoutX="688.0" layoutY="343.0" prefHeight="38.0" prefWidth="182.0" promptText="Contact" />
+      <TableView fx:id="tblPassenger" layoutX="-6.0" layoutY="463.0" prefHeight="262.0" prefWidth="1165.0" style="-fx-background-color: light blue;">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="117.0" text="Passenger ID" />
+          <TableColumn fx:id="colName" minWidth="0.0" prefWidth="335.0" text="Name" />
+            <TableColumn fx:id="colAge" prefWidth="156.0" text="Age" />
+            <TableColumn fx:id="colGender" prefWidth="162.0" text="Gender" />
+            <TableColumn fx:id="colAddress" prefWidth="199.0" text="Address" />
+            <TableColumn fx:id="colContact" prefWidth="195.0" text="Contact" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="608.0" layoutY="402.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/new.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="744.0" layoutY="402.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: yellow;" text=" Update" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="884.0" layoutY="402.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: blue;" text="Clear" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/clear.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1019.0" layoutY="402.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
