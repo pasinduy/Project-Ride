@@ -9,8 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrainDto {
-    private String trainId;
+    /*private String trainId;
     private String type;
     private String noOfSeats;
-    private String status;
+    private String status;*/
 }
