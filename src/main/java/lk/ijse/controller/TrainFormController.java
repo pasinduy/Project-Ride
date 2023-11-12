@@ -20,4 +20,7 @@ public class TrainFormController {
         stage.setTitle("Dashboard");
         stage.show();
     }
+
+    public void btnAddOnAction(ActionEvent actionEvent) {
+    }
 }

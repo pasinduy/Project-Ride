@@ -2,12 +2,7 @@ package lk.ijse.dto.Tm;
 
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+
 public class EmployeeTm {
     private String empId;
     private String name;

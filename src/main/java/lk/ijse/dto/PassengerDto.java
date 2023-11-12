@@ -3,11 +3,11 @@ package lk.ijse.dto;
 import lombok.*;
 
 @Getter
-@EqualsAndHashCode
-@ToString
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class PassengerDto {
     private String id;
     private String name;

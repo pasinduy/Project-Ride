@@ -49,9 +49,7 @@ public class PassengerModel {
         pstm.setString(5, dto.getAddress());
         pstm.setString(6, dto.getContact());
 
-        boolean isSaved = pstm.executeUpdate() > 0;
-
-        return isSaved;
+        return pstm.executeUpdate() > 0;
     }
 
     public boolean updatePassenger(PassengerDto dto) throws SQLException {

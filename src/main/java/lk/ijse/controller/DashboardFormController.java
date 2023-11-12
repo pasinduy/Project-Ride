@@ -93,4 +93,14 @@ public class DashboardFormController {
         stage.setTitle("Login");
         stage.show();
     }
+
+    public void btnDeliveryOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/delivery_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Delivery");
+        stage.show();
+    }
 }
