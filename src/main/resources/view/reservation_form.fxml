@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ReservationFormController">
+
+    <children>
+        <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back" />
+        <JFXTextField fx:id="txtId" layoutX="191.0" layoutY="50.0" onAction="#txtSearchOnAction" prefHeight="38.0" prefWidth="182.0" promptText="Ticket ID" />
+        <JFXTextField fx:id="txtPassengerID" layoutX="191.0" layoutY="137.0" prefHeight="38.0" prefWidth="182.0" promptText="Passenger ID" />
+        <JFXTextField fx:id="txtTrainID" layoutX="191.0" layoutY="228.0" prefHeight="38.0" prefWidth="182.0" promptText="Train ID" />
+        <JFXButton buttonType="RAISED" layoutX="545.0" layoutY="62.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="62.0" onAction="#btnUpdateOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: yellow;" text=" Update" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="545.0" layoutY="221.0" onAction="#btnClearOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: blue;" text="Clear" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="221.0" onAction="#btnDeleteOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+      <TableView fx:id="tblReservation" layoutX="201.0" layoutY="345.0" prefHeight="400.0" prefWidth="582.0">
+        <columns>
+          <TableColumn fx:id="colTicketID" prefWidth="180.0" text="Ticket ID" />
+            <TableColumn fx:id="colPassengerID" prefWidth="193.0" text="Passenger ID" />
+            <TableColumn fx:id="colTrainID" prefWidth="209.0" text="Train ID" />
+        </columns>
+      </TableView>
+    </children>
+
+</AnchorPane>

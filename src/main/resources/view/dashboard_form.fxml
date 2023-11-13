@@ -163,6 +163,7 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="Root" layoutX="300.0" prefHeight="800.0" prefWidth="1000.0" />
     </children>
 
 </AnchorPane>

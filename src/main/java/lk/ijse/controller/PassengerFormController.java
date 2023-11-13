@@ -44,13 +44,8 @@ public class PassengerFormController {
     }
 
     public void btnOnActionBack(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard");
-        stage.show();
+        this.root.getChildren().clear();
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
     }
 
     public void btnOnActionAdd(ActionEvent actionEvent) {
