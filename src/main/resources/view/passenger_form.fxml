@@ -25,7 +25,7 @@
       <JFXTextField fx:id="txtGender" layoutX="580.0" layoutY="137.0" prefHeight="38.0" prefWidth="182.0" promptText="Gender" />
       <JFXTextField fx:id="txtAddress" layoutX="191.0" layoutY="228.0" prefHeight="38.0" prefWidth="182.0" promptText="Address" />
       <JFXTextField fx:id="txtContact" layoutX="580.0" layoutY="228.0" prefHeight="38.0" prefWidth="182.0" promptText="Contact" />
-      <TableView fx:id="tblPassenger" layoutY="434.0" prefHeight="366.0" prefWidth="1000.0" style="-fx-background-color: #2980b9;">
+      <TableView fx:id="tblPassenger" layoutY="434.0" onMouseClicked="#tblPassengerOnMouseClicked" prefHeight="366.0" prefWidth="1000.0" style="-fx-background-color: #2980b9;">
         <columns>
           <TableColumn fx:id="colID" prefWidth="117.0" text="Passenger ID" />
           <TableColumn fx:id="colName" minWidth="0.0" prefWidth="335.0" text="Name" />
@@ -35,7 +35,7 @@
             <TableColumn fx:id="colContact" prefWidth="164.0" text="Contact" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="482.0" layoutY="307.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="422.0" layoutY="340.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: #9DB0CE;" text="Add" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="608.0" layoutY="307.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: yellow;" text=" Update" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="566.0" layoutY="340.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: #9DB0CE;" text=" Update" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="734.0" layoutY="307.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: blue;" text="Clear" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="714.0" layoutY="340.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: #9DB0CE;" text="Clear" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="860.0" layoutY="307.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="860.0" layoutY="340.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: #9DB0CE;" text="Delete" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

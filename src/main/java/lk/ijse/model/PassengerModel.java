@@ -56,7 +56,6 @@ public class PassengerModel {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE passenger SET name=?,age=?,gender=?,address=?,contact=? WHERE passengerId=?";
-
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getName());

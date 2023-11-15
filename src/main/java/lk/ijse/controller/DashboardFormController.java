@@ -3,13 +3,17 @@ package lk.ijse.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class DashboardFormController {
     @FXML
     private AnchorPane Root;
+    @FXML
+    private AnchorPane root;
 
     public void initialize() throws IOException {
         this.Root.getChildren().clear();
@@ -53,12 +57,21 @@ public class DashboardFormController {
     }
 
     public void btnLogOutOnAction(ActionEvent actionEvent) throws IOException {
-        this.Root.getChildren().clear();
-        this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/login_form.fxml")));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/login_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Login Page");
+        stage.centerOnScreen();////-
     }
 
     public void btnDeliveryOnAction(ActionEvent actionEvent) throws IOException {
         this.Root.getChildren().clear();
         this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/delivery_form.fxml")));
+    }
+
+    public void btnDashboardOnAction(ActionEvent actionEvent) throws IOException {
+        this.Root.getChildren().clear();
+        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
     }
 }

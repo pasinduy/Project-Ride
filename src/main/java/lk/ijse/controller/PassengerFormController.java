@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.PassengerDto;
@@ -168,5 +169,20 @@ public class PassengerFormController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void tblPassengerOnMouseClicked(MouseEvent mouseEvent) {
+            PassengerTm selectedCustomer = (PassengerTm) tblPassenger.getSelectionModel().getSelectedItem();
+            try {
+                PassengerDto dto = model.searchPassenger(selectedCustomer.getId());
+                txtId.setText(dto.getId());
+                txtName.setText(dto.getName());
+                txtAge.setText(dto.getAge());
+                txtGender.setText(dto.getGender());
+                txtAddress.setText(dto.getAddress());
+                txtContact.setText(dto.getContact());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
     }
 }

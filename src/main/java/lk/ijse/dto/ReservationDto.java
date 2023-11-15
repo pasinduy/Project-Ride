@@ -1,6 +1,11 @@
 package lk.ijse.dto;
 
+import lk.ijse.dto.Tm.ReservationTm;
 import lombok.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -8,7 +13,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class ReservationDto {
-    String id;
-    String passengerId;
-    String trainId;
+    private String reservationId;
+    private String passengerId;
+    private LocalDate orderDate;
+    private List<ReservationTm> reservationTmList = new ArrayList<>();
 }

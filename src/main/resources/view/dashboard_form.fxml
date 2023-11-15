@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #2980b9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #B8D8E3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
 
     <children>
       <Line endX="88.94168090820312" endY="-22.673072814941406" layoutX="210.0" layoutY="58.0" opacity="0.2" startX="88.94171142578125" startY="725.22119140625" stroke="WHITE" strokeType="OUTSIDE">
@@ -21,7 +20,22 @@
       </Line>
       <VBox layoutX="14.0" layoutY="92.0" prefHeight="708.0" prefWidth="280.0">
          <children>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnTrainOnAction" prefHeight="75.0" prefWidth="289.0" text="Trains" textAlignment="CENTER">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnDashboardOnAction" prefHeight="60.0" prefWidth="289.0" text="Dashboard" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Bold" size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-dashboard-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnTrainOnAction" prefHeight="60.0" prefWidth="289.0" text="Trains" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -36,7 +50,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnPassengerOnAction" prefHeight="75.0" prefWidth="280.0" text="Passengers" textAlignment="CENTER">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnPassengerOnAction" prefHeight="60.0" prefWidth="280.0" text="Passengers" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -51,7 +65,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnTicketOnAction" prefHeight="75.0" prefWidth="280.0" text="Tickets">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnTicketOnAction" prefHeight="60.0" prefWidth="280.0" text="Tickets">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -66,7 +80,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnSeatsOnAction" prefHeight="75.0" prefWidth="280.0" text="Seats">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnSeatsOnAction" prefHeight="60.0" prefWidth="280.0" text="Seats">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -81,7 +95,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnDeliveryOnAction" prefHeight="75.0" prefWidth="280.0" text="Delivery">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnDeliveryOnAction" prefHeight="60.0" prefWidth="280.0" text="Delivery">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -96,7 +110,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnScheduleOnAction" prefHeight="75.0" prefWidth="280.0" text="Schedules" textAlignment="CENTER">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnScheduleOnAction" prefHeight="60.0" prefWidth="280.0" text="Schedules" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -111,7 +125,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-              <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnEmployeeOnAction" prefHeight="75.0" prefWidth="280.0" text="Employee">
+              <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="280.0" text="Employee">
                   <cursor>
                       <Cursor fx:constant="HAND" />
                   </cursor>
@@ -126,7 +140,7 @@
                   </ImageView>
                </graphic>
               </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnAttendanceOnAction" prefHeight="75.0" prefWidth="280.0" text="Attendance">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnAttendanceOnAction" prefHeight="60.0" prefWidth="280.0" text="Attendance">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -141,7 +155,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnLogOutOnAction" prefHeight="75.0" prefWidth="280.0" text="Log out">
+            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="48.0" onAction="#btnLogOutOnAction" prefHeight="60.0" prefWidth="280.0" text="Log out">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -158,11 +172,6 @@
             </JFXButton>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutY="34.0" prefHeight="63.0" prefWidth="280.0" text="Dashboard">
-         <font>
-            <Font name="Arial Bold" size="36.0" />
-         </font>
-      </Label>
       <AnchorPane fx:id="Root" layoutX="300.0" prefHeight="800.0" prefWidth="1000.0" />
     </children>
 

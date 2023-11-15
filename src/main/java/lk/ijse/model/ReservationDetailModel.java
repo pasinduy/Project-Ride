@@ -1,0 +1,34 @@
+package lk.ijse.model;
+
+import lk.ijse.db.DbConnection;
+import lk.ijse.dto.Tm.ReservationTm;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+public class ReservationDetailModel {
+    public boolean saveOrderDetails(String reservationId, List<ReservationTm> reservationTmList) throws SQLException {
+        for(ReservationTm tm : reservationTmList) {
+            if(!saveOrderDetails(reservationId, tm)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean saveOrderDetails(String reservationId, ReservationTm tm) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO reservation_details VALUES(?, ?, ?, ?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, reservationId);
+        pstm.setString(2, tm.getTrainId());
+        pstm.setString(3, String.valueOf(tm.getNoOfSeats()));
+        pstm.setInt(4, (int) tm.getTicketPrice());
+
+        return pstm.executeUpdate() > 0;
+    }
+}
