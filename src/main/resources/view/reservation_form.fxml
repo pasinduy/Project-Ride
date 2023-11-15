@@ -1,46 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ReservationFormController">
-
-    <children>
-        <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back" />
-        <JFXTextField fx:id="txtId" layoutX="191.0" layoutY="50.0" onAction="#txtSearchOnAction" prefHeight="38.0" prefWidth="182.0" promptText="Ticket ID" />
-        <JFXTextField fx:id="txtPassengerID" layoutX="191.0" layoutY="137.0" prefHeight="38.0" prefWidth="182.0" promptText="Passenger ID" />
-        <JFXTextField fx:id="txtTrainID" layoutX="191.0" layoutY="228.0" prefHeight="38.0" prefWidth="182.0" promptText="Train ID" />
-        <JFXButton buttonType="RAISED" layoutX="545.0" layoutY="62.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: green;" text="Add" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="62.0" onAction="#btnUpdateOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: yellow;" text=" Update" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="545.0" layoutY="221.0" onAction="#btnClearOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: blue;" text="Clear" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="221.0" onAction="#btnDeleteOnAction" prefHeight="53.0" prefWidth="126.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-      <TableView fx:id="tblReservation" layoutX="201.0" layoutY="345.0" prefHeight="400.0" prefWidth="582.0">
-        <columns>
-          <TableColumn fx:id="colTicketID" prefWidth="180.0" text="Ticket ID" />
-            <TableColumn fx:id="colPassengerID" prefWidth="193.0" text="Passenger ID" />
-            <TableColumn fx:id="colTrainID" prefWidth="209.0" text="Train ID" />
-        </columns>
+   <children>
+      <Label layoutX="24.0" layoutY="74.0" text="Reservation Id:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblReservationId" layoutX="138.0" layoutY="72.0" prefHeight="26.0" prefWidth="98.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="391.0" layoutY="14.0" prefHeight="42.0" prefWidth="219.0" text="Reservation Form" textFill="#5e5c5c">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="132.0" text="Passenger ID">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="passengerId" layoutX="140.0" layoutY="116.0" onAction="#passengerOnAction" prefHeight="33.0" prefWidth="203.0" />
+      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="120.0" onAction="#btnNewPassengerOnAction" prefHeight="21.0" prefWidth="74.0" style="-fx-background-color: #2ecc71;" text="NEW" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="601.0" layoutY="74.0" text="Reservation date:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="192.0" text="Train ID">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="TrainId" layoutX="24.0" layoutY="214.0" onAction="#TrainOnAction" prefHeight="33.0" prefWidth="183.0" />
+      <Label layoutX="273.0" layoutY="190.0" text="Type">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="446.0" layoutY="190.0" text="Price Per Ticket">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="628.0" layoutY="190.0" text="Seats Available">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="190.0" text="Quantity of Booking Seats">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="861.0" layoutY="214.0" onAction="#txtQtyOnAction" prefHeight="33.0" prefWidth="66.0" />
+      <TableView fx:id="tblOrderCart" layoutX="1.0" layoutY="377.0" prefHeight="295.0" prefWidth="1000.0">
+         <columns>
+            <TableColumn fx:id="colTrainId" prefWidth="140.0" text="Train ID" />
+            <TableColumn fx:id="colType" prefWidth="204.0" text="Type" />
+            <TableColumn fx:id="colNoOfSeats" prefWidth="149.0" text="No of Seats" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="165.0" text="Price Per Ticket" />
+            <TableColumn fx:id="colTotal" minWidth="0.0" prefWidth="192.0" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="149.0" text="Action" />
+         </columns>
       </TableView>
-    </children>
-
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="806.0" layoutY="274.0" onAction="#btnAddToCartOnAction" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #3498db;" text="Make A Reservation" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="801.0" layoutY="718.0" onAction="#btnPlaceOrderOnAction" prefHeight="34.0" prefWidth="148.0" style="-fx-background-color: #34495e;" text="Place Reservation" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="27.0" layoutY="724.0" text="Total Price of Booked Tickets :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" layoutX="262.0" layoutY="719.0" prefHeight="32.0" prefWidth="129.0" textFill="#b51313">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblType" layoutX="263.0" layoutY="225.0" prefHeight="26.0" prefWidth="91.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUnitPrice" layoutX="462.0" layoutY="225.0" prefHeight="26.0" prefWidth="74.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSeatsAvailable" layoutX="636.0" layoutY="225.0" prefHeight="26.0" prefWidth="91.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="19.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="66.0" style="-fx-background-color: #bdc3c7;" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="lblDate" layoutX="746.0" layoutY="72.0" prefHeight="26.0" prefWidth="148.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="601.0" layoutY="122.0" text="Passenger Name">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtPassengerID" layoutX="746.0" layoutY="119.0" prefHeight="26.0" prefWidth="239.0" textFill="#278d7f">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
