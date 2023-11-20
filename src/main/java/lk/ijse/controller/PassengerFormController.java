@@ -46,11 +46,18 @@ public class PassengerFormController {
 
     public void btnOnActionBack(ActionEvent actionEvent) throws IOException {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
     }
 
-    public void btnOnActionAdd(ActionEvent actionEvent) {
-        String id = txtId.getText();
+    public void btnOnActionAdd(ActionEvent actionEvent) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/addPassenger_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Add Passenger");
+        stage.centerOnScreen();
+
+        /*String id = txtId.getText();
         String name = txtName.getText();
         String age = txtAge.getText();
         String gender = txtGender.getText();
@@ -68,7 +75,7 @@ public class PassengerFormController {
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+        }*/
     }
 
     public void btnOnActionUpdate(ActionEvent actionEvent) {

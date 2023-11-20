@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class EmployeeFormController {
+public class ScheduleFormController {
     public AnchorPane root;
 
     public void btnOnActionBack(ActionEvent actionEvent) throws IOException {

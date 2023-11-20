@@ -17,7 +17,7 @@ public class DashboardFormController {
 
     public void initialize() throws IOException {
         this.Root.getChildren().clear();
-        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
+        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
     }
 
     public void btnPassengerOnAction(ActionEvent actionEvent) throws IOException {
@@ -36,11 +36,6 @@ public class DashboardFormController {
 
     }
 
-    public void btnSeatsOnAction(ActionEvent actionEvent) throws IOException{
-        this.Root.getChildren().clear();
-        this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/seats_form.fxml")));
-    }
-
     public void btnTicketOnAction(ActionEvent actionEvent) throws IOException{
         this.Root.getChildren().clear();
         this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/reservation_form.fxml")));
@@ -53,7 +48,7 @@ public class DashboardFormController {
 
     public void btnScheduleOnAction(ActionEvent actionEvent) throws IOException {
         this.Root.getChildren().clear();
-        this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/trainSchedule_form.fxml")));
+        this.Root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/schedule_form.fxml")));
     }
 
     public void btnLogOutOnAction(ActionEvent actionEvent) throws IOException {
@@ -62,7 +57,7 @@ public class DashboardFormController {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("Login Page");
-        stage.centerOnScreen();////-
+        stage.centerOnScreen();
     }
 
     public void btnDeliveryOnAction(ActionEvent actionEvent) throws IOException {
@@ -72,6 +67,11 @@ public class DashboardFormController {
 
     public void btnDashboardOnAction(ActionEvent actionEvent) throws IOException {
         this.Root.getChildren().clear();
-        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
+        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
+    }
+
+    public void btnDriverOnAction(ActionEvent actionEvent) throws IOException {
+        this.Root.getChildren().clear();
+        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/driver_form.fxml")));
     }
 }

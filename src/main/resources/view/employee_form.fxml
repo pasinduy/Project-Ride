@@ -7,17 +7,40 @@
 <?import com.jfoenix.controls.JFXButton?>
 <AnchorPane fx:id="root"  prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeFormController">
    <children>
-      <ImageView fitHeight="736.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/bb80728cb8cb030a872d6945fd39bcec.jpg" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="61.0" fitWidth="59.0" layoutX="64.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/icons8-back-button.gif" />
          </image>
       </ImageView>
+
       <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" layoutX="42.0" layoutY="28.0" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back" />
+      <JFXTextField fx:id="txtID" layoutX="204.0" layoutY="103.0" onAction="#btnLoadOnAction" prefHeight="49.0" prefWidth="228.0" promptText="Train ID" />
+      <JFXTextField fx:id="txtNoOfSeats" layoutX="204.0" layoutY="210.0" prefHeight="49.0" prefWidth="228.0" promptText="Number Of Seats" />
+      <JFXTextField fx:id="txtType" layoutX="658.0" layoutY="103.0" prefHeight="49.0" prefWidth="228.0" promptText="Tyoe" />
+      <JFXTextField fx:id="txtStatus" layoutX="658.0" layoutY="210.0" prefHeight="49.0" prefWidth="228.0" promptText="Availability" />
+      <JFXTextField fx:id="txtPrice" layoutX="204.0" layoutY="328.0" prefHeight="49.0" prefWidth="228.0" promptText="Price Per Ticket" />
+
+      <TableView fx:id="tblTrains" layoutX="7.0" layoutY="390.0" prefHeight="385.0" prefWidth="979.0">
+         <columns>
+            <TableColumn fx:id="colTrainID" prefWidth="208.0" text="Train ID" />
+            <TableColumn fx:id="colType" prefWidth="196.0" text="Type" />
+            <TableColumn fx:id="colNoOfSeats" prefWidth="227.0" text="Number Of Seats" />
+            <TableColumn fx:id="colStatus" prefWidth="197.0" text="Status of Avaliability" />
+            <TableColumn fx:id="colPrice" prefWidth="150.0" text="Price Per Ticket" />
+         </columns>
+      </TableView>
+
+      <JFXButton layoutX="500.0" layoutY="329.0" onAction="#btnAddOnAction" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: #9DB0CE;" text="Add" />
+      <JFXButton layoutX="630.0" layoutY="328.0" onAction="#btnUpdateOnAction" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: #9DB0CE;" text="Update" />
+      <JFXButton layoutX="886.0" layoutY="329.0" onAction="#btnClearOnAction" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: #9DB0CE;" text="Clear" />
+      <JFXButton layoutX="761.0" layoutY="329.0" onAction="#btnDeleteOnAction" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: #9DB0CE;" text="Delete" />
+
+      <Label alignment="CENTER" layoutX="432.0" layoutY="22.0" prefHeight="49.0" prefWidth="228.0" text="Trains">
+         <font>
+            <Font name="System Bold" size="37.0" />
+         </font>
+      </Label>
    </children>
+
 
 </AnchorPane>

@@ -54,7 +54,7 @@ public class TrainModel {
     public boolean updateTrains(List<ReservationTm> reservationTmList) throws SQLException {
         for(ReservationTm tm : reservationTmList) {
             System.out.println("Train Model " + tm);
-            if(!updateQty(tm.getTrainId(), tm.getNoOfSeats())) {
+            if(!updateQty(tm.getTrainId(), Integer.parseInt(tm.getNoOfSeats()))) {
                 return false;
             }
         }

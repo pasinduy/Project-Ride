@@ -2,7 +2,9 @@ package lk.ijse.dto.Tm;
 
 import lombok.*;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeTm {
     private String empId;
     private String name;

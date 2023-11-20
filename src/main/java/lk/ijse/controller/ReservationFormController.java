@@ -12,11 +12,9 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.PassengerDto;
-import lk.ijse.dto.ReservationDto;
 import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.dto.TrainDto;
 import lk.ijse.model.PassengerModel;
@@ -28,11 +26,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import static java.lang.String.*;
 
 public class ReservationFormController {
 
@@ -42,7 +37,7 @@ public class ReservationFormController {
     public TableView tblReservation;
     public TableColumn colTicketID;
     public TableColumn colPassengerID;
-    public TableColumn colTrainID;
+    public TableColumn <?,?>colTrainID;
 
     public AnchorPane root;
     public Label lblReservationId;
@@ -57,12 +52,13 @@ public class ReservationFormController {
     public TableColumn colType;
     public TableColumn colNoOfSeats;
     public TableColumn colUnitPrice;
-    public TableColumn colTotal;
+    public TableColumn <?,?>colTotal;
     public TableColumn colAction;
     public JFXButton btnAddToCart;
     public TableView tblOrderCart;
     public TextField txtQty;
     public Label lblDate;
+    public Label passengerName;
 
     private PassengerModel passengerModel = new PassengerModel();
     private ReservationModel reservationModel = new ReservationModel();
@@ -99,12 +95,16 @@ public class ReservationFormController {
     }
 
     private void calculateTotal() {
-        double total = 0;
-        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-            total += (double) colTotal.getCellData(i);
-        }
-        lblNetTotal.setText(String.valueOf(total));
-    }
+        if(tblOrderCart.getItems()!=null && tblOrderCart.getItems().size()!=0){
+            double total = 0;
+            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                total += (double) colTotal.getCellData(i);
+            }
+            lblNetTotal.setText(String.valueOf(total));
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Cart is empty!").show();
+
+        }    }
 
     public void initialize() {
         setCellValueFactory();
@@ -166,7 +166,7 @@ public class ReservationFormController {
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
@@ -186,8 +186,9 @@ public class ReservationFormController {
         String trainId = (String) TrainId.getValue();
         String type = lblType.getText();
         String qty = txtQty.getText();
-        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
-        double total = unitPrice * Double.parseDouble(qty);
+        String unitPrice = lblUnitPrice.getText();
+        double tot = Double.parseDouble(lblUnitPrice.getText()) * Double.parseDouble(txtQty.getText()) ;
+        String total = String.valueOf(tot);
         Button btnRemove = new Button("Remove");
 
         setRemoveBtnAction(btnRemove);
@@ -198,17 +199,17 @@ public class ReservationFormController {
                 if (colTrainID.getCellData(i).equals(trainId)) {
                     int col_qty = (int) colNoOfSeats.getCellData(i);
                     qty += col_qty;
-                    total = unitPrice * Double.parseDouble(qty);
+                    tot = Double.parseDouble(unitPrice) * Double.parseDouble(qty);
 
-                    obList.get(i).setNoOfSeats(Integer.parseInt(qty));
-                    obList.get(i).setTot(total);
+                    obList.get(i).setNoOfSeats(qty);
+                    obList.get(i).setTot(String.valueOf(tot));
                     tblOrderCart.refresh();
                     calculateTotal();
                     return;
                 }
             }
         }
-        var tm = new ReservationTm(trainId, type, qty, unitPrice, total, btnRemove);
+        var tm = new ReservationTm(trainId, type, qty, unitPrice, total, btnRemove );
 
         obList.add(tm);
 
@@ -241,7 +242,7 @@ public class ReservationFormController {
 
         try {
             PassengerDto dto = passengerModel.searchPassenger(id);
-            txtPassengerID.setText(dto.getId());
+            passengerName.setText(dto.getName());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

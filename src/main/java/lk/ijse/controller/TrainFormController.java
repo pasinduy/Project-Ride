@@ -38,7 +38,7 @@ public class TrainFormController {
 
     public void btnOnActionBack(ActionEvent actionEvent) throws IOException {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/mainDashboard_form.fxml")));
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {

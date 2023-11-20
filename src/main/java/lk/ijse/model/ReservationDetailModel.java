@@ -27,7 +27,7 @@ public class ReservationDetailModel {
         pstm.setString(1, reservationId);
         pstm.setString(2, tm.getTrainId());
         pstm.setString(3, String.valueOf(tm.getNoOfSeats()));
-        pstm.setInt(4, (int) tm.getTicketPrice());
+        pstm.setString(4, tm.getTot());
 
         return pstm.executeUpdate() > 0;
     }

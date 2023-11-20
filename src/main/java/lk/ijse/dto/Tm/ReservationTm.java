@@ -3,6 +3,7 @@ package lk.ijse.dto.Tm;
 import lombok.*;
 
 import java.awt.*;
+import javafx.scene.control.Button;
 
 @Getter
 @Setter
@@ -12,9 +13,8 @@ import java.awt.*;
 public class ReservationTm {
     private String trainId;
     private String type;
-    private int noOfSeats;
-    private double ticketPrice;
-    private double tot;
+    private String noOfSeats;
+    private String ticketPrice;
+    private String tot;
     private Button btn;
-
 }

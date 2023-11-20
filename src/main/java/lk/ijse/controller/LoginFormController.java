@@ -1,7 +1,10 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,32 +13,37 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dto.TrainDto;
+import lk.ijse.dto.UserDto;
+import lk.ijse.model.TrainModel;
+import lk.ijse.model.UserModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class LoginFormController {
-
-    public JFXTextField txtUsername;
     public JFXPasswordField txtPassword;
+    public JFXComboBox txtUsername;
     public AnchorPane root;
 
     public void btnOnActionLogin(ActionEvent actionEvent) throws IOException {
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
+        String user_name = txtUsername.getSelectionModel().getSelectedItem().toString();
+        try {
+            UserDto user = UserModel.searchUser(user_name);
 
-        if (username.equals("admin") && password.equals("1234")) {
-            try {
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
-                Scene scene = new Scene(anchorPane);
-                Stage stage = (Stage) txtUsername.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Dashboard");
-                stage.centerOnScreen();
-            } catch (IOException e) {
-                e.printStackTrace(); // Handle the exception appropriately
+            if (user.getPassword().equals(txtPassword.getText())) {
+                Stage currentStage = (Stage) root.getScene().getWindow();
+                currentStage.close();
+
+                Stage newStage = new Stage();
+                newStage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml")).load()));
+                newStage.show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid Password").show();
             }
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -48,28 +56,26 @@ public class LoginFormController {
                 txtOnActionLogin();
             }
         });
+        loadId();
     }
 
-    public void txtOnActionLogin() {
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
+    public void txtOnActionLogin() {}
 
-        if (username.equals("admin") && password.equals("1234")) {
-            try {
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
-                Scene scene = new Scene(anchorPane);
-                Stage stage = (Stage) txtUsername.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Dashboard");
-                stage.centerOnScreen();
-            } catch (IOException e) {
-                e.printStackTrace(); // Handle the exception appropriately
+    public void loadId(){
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<UserDto> IdDtos = UserModel.getAllId();
+
+            for (UserDto dto : IdDtos) {
+                obList.add(dto.getUsername());
             }
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
+            txtUsername.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
-
-    public void btnOnActionForgot(ActionEvent actionEvent) {
+    public void btnOnActionForgot(ActionEvent actionEvent) throws IOException {
+        this.root.getChildren().clear();
+        this.root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/new_user_form.fxml")));
     }
 }
