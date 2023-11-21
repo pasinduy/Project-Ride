@@ -13,13 +13,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.db.DbConnection;
 import lk.ijse.dto.PassengerDto;
 import lk.ijse.dto.Tm.PassengerTm;
 import lk.ijse.model.PassengerModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PassengerFormController {
     public AnchorPane root;
@@ -191,5 +199,16 @@ public class PassengerFormController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+    }
+
+    public void btnOnActionReport(ActionEvent actionEvent) throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/ProjectRidePassenger.jrxml"));
+        String sql = "SELECT * FROM Passenger";
+        JRDesignQuery query = new JRDesignQuery();
+        query.setText(sql);
+        jasperDesign.setQuery(query);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
     }
 }

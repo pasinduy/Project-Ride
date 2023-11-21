@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.MainDashboardControllerForm">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.MainDashboardControllerForm">
 <children>
 <Label fx:id="lblTime" layoutX="1256.0" layoutY="22.0" prefHeight="49.0" prefWidth="350.0" style="-fx-background-color: white;" stylesheets="@../styles/dashboard.css" textFill="#1e1b1b">
     <font>

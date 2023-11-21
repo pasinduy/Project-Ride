@@ -49,3 +49,35 @@
     -fx-background-color: #85b0ff;
 }
 
+.date-picker
+{
+    -fx-background-color: #b3caff;
+}
+
+.time-picker
+{
+    -fx-background-color: #b3caff;
+}
+
+.date-picker:focused
+{
+    -fx-background-color: #b7deea;
+}
+
+.time-picker:focused
+{
+    -fx-background-color: #b7deea;
+}
+
+.date-picker:hover
+{
+    -fx-background-color: #85b0ff;
+}
+
+.time-picker:hover
+{
+    -fx-background-color: #85b0ff;
+}
+
+
+

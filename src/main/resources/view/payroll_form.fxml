@@ -6,9 +6,110 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="lk.ijse.controller.PayrollFormController"
             prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back">
+            <graphic>
+                <ImageView fitHeight="61.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/icons8-back-button.gif" />
+                    </image>
+                </ImageView>
+            </graphic></JFXButton>
+        <JFXTextField fx:id="txtId" layoutX="500.0" layoutY="100.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Schedule ID" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtStartStation" layoutX="500.0" layoutY="300.0" prefHeight="50.0" prefWidth="250.0" promptText="Starting Station" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtEndStation" layoutX="500.0" layoutY="400.0" prefHeight="50.0" prefWidth="250.0" promptText="Ending Station" stylesheets="@../styles/dashboard.css" />
+        <TableView fx:id="tblPassenger" layoutY="524.0" onMouseClicked="#tblScheduleOnMouseClicked" prefHeight="558.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="242.99993896484375" text="Search ID" />
+                <TableColumn fx:id="colTrainId" minWidth="0.0" prefWidth="247.0" text="Train ID" />
+                <TableColumn fx:id="colStartStation" prefWidth="233.0" text="Starting Station" />
+                <TableColumn fx:id="colEndingStation" prefWidth="265.0" text="Ending Station" />
+                <TableColumn fx:id="colDate" prefWidth="226.0" text="Date" />
+                <TableColumn fx:id="colStartTime" prefWidth="195.0" text="Start Time" />
+                <TableColumn fx:id="colEndTime" prefWidth="210.0" text="End Time" />
+            </columns>
+        </TableView>
+        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="50.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/new.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="135.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/update.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="220.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/clear.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="305.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/delete.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="390.0" onAction="#btnOnActionReport" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Report" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/icons8-report-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <ImageView fitHeight="275.0" fitWidth="271.0" layoutX="155.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icon/icons8-calendar-64.png" />
+            </image>
+        </ImageView>
+        <ComboBox fx:id="ComboTrainId" layoutX="500.0" layoutY="200.0" prefHeight="50.0" prefWidth="250.0" promptText="Train ID" stylesheets="@../styles/dashboard.css" />
+        <JFXDatePicker fx:id="txtDate" defaultColor="BLACK" layoutX="956.0" layoutY="150.0" prefHeight="50.0" prefWidth="250.0" promptText="Date" />
+        <JFXTimePicker fx:id="txtStartTime" defaultColor="BLACK" layoutX="956.0" layoutY="250.0" prefHeight="50.0" prefWidth="250.0" promptText="Start Time" />
+        <JFXTimePicker fx:id="txtEndTime" defaultColor="BLACK" layoutX="956.0" layoutY="350.0" prefHeight="50.0" prefWidth="250.0" promptText="End Time" />
+    </children>
 
 </AnchorPane>
