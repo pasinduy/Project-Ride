@@ -60,7 +60,7 @@
       </JFXPasswordField>
       <Hyperlink layoutX="895.0" layoutY="813.0" onAction="#btnOnActionForgot" text="New to the System ? Please Register Here !!" />
       <JFXComboBox fx:id="txtUsername" layoutX="903.0" layoutY="417.0" prefHeight="59.0" prefWidth="254.0" stylesheets="@../styles/dashboard.css" />
-      <ImageView fitHeight="225.0" fitWidth="254.0" layoutX="900.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="296.0" fitWidth="293.0" layoutX="878.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/Login%20logo.png" />
          </image>

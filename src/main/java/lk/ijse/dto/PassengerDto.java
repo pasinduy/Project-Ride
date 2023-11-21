@@ -15,4 +15,8 @@ public class PassengerDto {
     private String gender;
     private String address;
     private String contact;
+
+    public PassengerDto(String string) {
+        this.id = string;
+    }
 }

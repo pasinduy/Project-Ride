@@ -5,29 +5,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.db.DbConnection;
 import lk.ijse.dto.PassengerDto;
 import lk.ijse.dto.Tm.PassengerTm;
 import lk.ijse.model.PassengerModel;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PassengerFormController {
     public AnchorPane root;
@@ -58,72 +50,36 @@ public class PassengerFormController {
     }
 
     public void btnOnActionAdd(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/addPassenger_form.fxml"));
+        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/passenger_add_form.fxml"));
         Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(scene);
+
+        Stage stage = new Stage();
         stage.setTitle("Add Passenger");
+        stage.setScene(scene);
         stage.centerOnScreen();
-
-        /*String id = txtId.getText();
-        String name = txtName.getText();
-        String age = txtAge.getText();
-        String gender = txtGender.getText();
-        String address = txtAddress.getText();
-        String contact = txtContact.getText();
-
-        var dto = new PassengerDto(id, name, age, gender, address, contact);
-
-        try {
-            boolean isSaved = model.addPassenger(dto);
-
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                clearFields();
-            }
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }*/
+        stage.show();
     }
 
-    public void btnOnActionUpdate(ActionEvent actionEvent) {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String age = txtAge.getText();
-        String gender = txtGender.getText();
-        String address = txtAddress.getText();
-        String contact = txtContact.getText();
+    public void btnOnActionUpdate(ActionEvent actionEvent) throws IOException {
+        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/passenger_update_form.fxml"));
+        Scene scene = new Scene(anchorPane);
 
-        var dto = new PassengerDto(id, name, age, gender, address, contact);
-
-        try {
-            boolean isUpdated = model.updatePassenger(dto);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-                clearFields();
-            }
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+        Stage stage = new Stage();
+        stage.setTitle("Add Passenger");
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void btnOnActionClear(ActionEvent actionEvent) {
-        clearFields();
-    }
+    public void btnOnActionDelete(ActionEvent actionEvent) throws IOException {
+        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/passenger_delete_form.fxml"));
+        Scene scene = new Scene(anchorPane);
 
-    public void btnOnActionDelete(ActionEvent actionEvent) {
-        String id = txtId.getText();
-
-        try {
-            boolean isDeleted = model.deletePassenger(id);
-
-            if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
-                clearFields();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+        Stage stage = new Stage();
+        stage.setTitle("Add Passenger");
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
     private void loadAllPassengers() {
         var model = new PassengerModel();
@@ -159,15 +115,6 @@ public class PassengerFormController {
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
     }
 
-    private void clearFields() {
-        txtId.clear();
-        txtName.clear();
-        txtAge.clear();
-        txtGender.clear();
-        txtAddress.clear();
-        txtContact.clear();
-    }
-
     public void txtOnActionSearch(ActionEvent actionEvent) {
         String id = txtId.getText();
 
@@ -184,31 +131,5 @@ public class PassengerFormController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-    }
-
-    public void tblPassengerOnMouseClicked(MouseEvent mouseEvent) {
-            PassengerTm selectedCustomer = (PassengerTm) tblPassenger.getSelectionModel().getSelectedItem();
-            try {
-                PassengerDto dto = model.searchPassenger(selectedCustomer.getId());
-                txtId.setText(dto.getId());
-                txtName.setText(dto.getName());
-                txtAge.setText(dto.getAge());
-                txtGender.setText(dto.getGender());
-                txtAddress.setText(dto.getAddress());
-                txtContact.setText(dto.getContact());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-    }
-
-    public void btnOnActionReport(ActionEvent actionEvent) throws JRException, SQLException {
-        JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/ProjectRidePassenger.jrxml"));
-        String sql = "SELECT * FROM Passenger";
-        JRDesignQuery query = new JRDesignQuery();
-        query.setText(sql);
-        jasperDesign.setQuery(query);
-        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint, false);
     }
 }

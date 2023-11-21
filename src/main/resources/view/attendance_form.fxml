@@ -11,7 +11,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="lk.ijse.controller.AttendanceFormController">
 

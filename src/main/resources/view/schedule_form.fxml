@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" style="-fx-background-color: #84bbe1;" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ScheduleFormController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ScheduleFormController">
 
     <children>
         <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back">
@@ -37,7 +37,7 @@
             <TableColumn fx:id="colEndTime" prefWidth="210.0" text="End Time" />
             </columns>
         </TableView>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="50.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1431.0" layoutY="121.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -49,7 +49,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="135.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1431.0" layoutY="206.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -61,7 +61,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="220.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1431.0" layoutY="291.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -73,7 +73,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="305.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1431.0" layoutY="376.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -85,26 +85,14 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="390.0" onAction="#btnOnActionReport" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Report" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/icons8-report-50.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </JFXButton>
         <ImageView fitHeight="275.0" fitWidth="271.0" layoutX="155.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icon/icons8-calendar-64.png" />
             </image>
         </ImageView>
       <ComboBox fx:id="ComboTrainId" layoutX="500.0" layoutY="200.0" prefHeight="50.0" prefWidth="250.0" promptText="Train ID" stylesheets="@../styles/dashboard.css" />
-      <JFXDatePicker fx:id="txtDate" defaultColor="BLACK" layoutX="956.0" layoutY="150.0" prefHeight="50.0" prefWidth="250.0" promptText="Date" />
-      <JFXTimePicker fx:id="txtStartTime" defaultColor="BLACK" layoutX="956.0" layoutY="250.0" prefHeight="50.0" prefWidth="250.0" promptText="Start Time" />
-      <JFXTimePicker fx:id="txtEndTime" defaultColor="BLACK" layoutX="956.0" layoutY="350.0" prefHeight="50.0" prefWidth="250.0" promptText="End Time" />
+      <JFXDatePicker fx:id="txtDate" defaultColor="BLACK" layoutX="956.0" layoutY="150.0" prefHeight="50.0" prefWidth="250.0" promptText="Date" stylesheets="@../styles/dashboard.css" />
+      <JFXTimePicker fx:id="txtStartTime" defaultColor="BLACK" layoutX="956.0" layoutY="250.0" prefHeight="50.0" prefWidth="250.0" promptText="Start Time" stylesheets="@../styles/dashboard.css" />
+      <JFXTimePicker fx:id="txtEndTime" defaultColor="BLACK" layoutX="956.0" layoutY="350.0" prefHeight="50.0" prefWidth="250.0" promptText="End Time" stylesheets="@../styles/dashboard.css" />
     </children>
 </AnchorPane>

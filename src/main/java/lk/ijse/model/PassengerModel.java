@@ -12,6 +12,26 @@ import java.util.List;
 
 public class PassengerModel {
 
+
+    public static List<PassengerDto> getAllPassengerId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT passengerId FROM passenger";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<PassengerDto> dtoList = new ArrayList<>();
+
+        while(resultSet.next()) {
+            dtoList.add(
+                    new PassengerDto(
+                            resultSet.getString(1)
+                    )
+            );
+        }
+        return dtoList;
+    }
+
     public List<PassengerDto> getAllPassengers() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 

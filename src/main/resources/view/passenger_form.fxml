@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -19,13 +19,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXTextField fx:id="txtId" layoutX="541.0" layoutY="135.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Passenger ID" stylesheets="@../styles/dashboard.css" />
-      <JFXTextField fx:id="txtAge" layoutX="541.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Age" stylesheets="@../styles/dashboard.css" />
-      <JFXTextField fx:id="txtName" layoutX="956.0" layoutY="135.0" prefHeight="50.0" prefWidth="250.0" promptText="Name" stylesheets="@../styles/dashboard.css" />
-      <JFXTextField fx:id="txtGender" layoutX="956.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Gender" stylesheets="@../styles/dashboard.css" />
-      <JFXTextField fx:id="txtAddress" layoutX="541.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Address" stylesheets="@../styles/dashboard.css" />
-      <JFXTextField fx:id="txtContact" layoutX="956.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Contact" stylesheets="@../styles/dashboard.css" />
-      <TableView fx:id="tblPassenger" layoutY="524.0" onMouseClicked="#tblPassengerOnMouseClicked" prefHeight="558.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;">
+      <TableView fx:id="tblPassenger" layoutY="524.0" prefHeight="558.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;">
         <columns>
           <TableColumn fx:id="colID" prefWidth="242.99993896484375" text="Passenger ID" />
           <TableColumn fx:id="colName" minWidth="0.0" prefWidth="300.0" text="Name" />
@@ -35,7 +29,12 @@
             <TableColumn fx:id="colContact" prefWidth="276.0" text="Contact" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="50.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
+      <Label layoutX="701.0" layoutY="28.0" prefHeight="42.0" prefWidth="219.0" text="Passenger Form" textFill="#5e5c5c">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="741.0" layoutY="104.0" onAction="#btnOnActionAdd" prefHeight="170.0" prefWidth="245.0" stylesheets="@../styles/form.css" text="Add" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -47,7 +46,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="135.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="997.0" layoutY="104.0" onAction="#btnOnActionUpdate" prefHeight="170.0" prefWidth="245.0" stylesheets="@../styles/form.css" text=" Update" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -59,19 +58,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="220.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/clear.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="305.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="864.0" layoutY="289.0" onAction="#btnOnActionDelete" prefHeight="170.0" prefWidth="245.0" stylesheets="@../styles/form.css" text="Delete" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -83,19 +70,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="390.0" onAction="#btnOnActionReport" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Report" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/icons8-report-50.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <ImageView fitHeight="370.0" fitWidth="332.0" layoutX="148.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="370.0" fitWidth="332.0" layoutX="346.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/icons8-passenger-64%20(1).png" />
          </image>

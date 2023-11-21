@@ -74,4 +74,9 @@ public class DashboardFormController {
         this.Root.getChildren().clear();
         this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/driver_form.fxml")));
     }
+
+    public void btnPayrollOnAction(ActionEvent actionEvent) throws IOException {
+        this.Root.getChildren().clear();
+        this.Root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/payroll_form.fxml")));
+    }
 }

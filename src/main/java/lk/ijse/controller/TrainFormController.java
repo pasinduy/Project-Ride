@@ -75,7 +75,7 @@ public class TrainFormController {
         try {
             boolean isUpdated = model.updateTrain(dto);
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Train updated!").show();
                 clearFields();
             }
         } catch (Exception e) {
