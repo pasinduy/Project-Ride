@@ -32,7 +32,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="passengerId" layoutX="476.0" layoutY="207.0" onAction="#passengerOnAction" prefHeight="33.0" prefWidth="183.0" />
+      <JFXComboBox fx:id="cmbPassengerId" layoutX="476.0" layoutY="207.0" onAction="#passengerOnAction" prefHeight="33.0" prefWidth="183.0" />
       <JFXButton buttonType="RAISED" layoutX="704.0" layoutY="211.0" onAction="#btnNewPassengerOnAction" prefHeight="21.0" prefWidth="74.0" style="-fx-background-color: #2ecc71;" text="NEW" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -48,7 +48,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="TrainId" layoutX="477.0" layoutY="300.0" onAction="#TrainOnAction" prefHeight="33.0" prefWidth="183.0" />
+      <JFXComboBox fx:id="cmbTrainId" layoutX="477.0" layoutY="300.0" onAction="#TrainOnAction" prefHeight="33.0" prefWidth="183.0" />
       <Label layoutX="337.0" layoutY="375.0" text="Type">
          <font>
             <Font name="System Bold" size="15.0" />

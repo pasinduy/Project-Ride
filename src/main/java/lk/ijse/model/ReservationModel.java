@@ -34,7 +34,7 @@ public class ReservationModel {
         }
     }
 
-    public boolean saveOrder(String orderId, String customerId, LocalDate date) throws SQLException {
+    public static boolean saveOrder(String orderId, String customerId, LocalDate date) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO orders VALUES(?, ?, ?)";

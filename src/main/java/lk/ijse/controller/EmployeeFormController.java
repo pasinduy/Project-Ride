@@ -32,7 +32,4 @@ public class EmployeeFormController {
 
     public void btnOnActionDelete(ActionEvent actionEvent) {
     }
-
-    public void btnOnActionReport(ActionEvent actionEvent) {
-    }
 }

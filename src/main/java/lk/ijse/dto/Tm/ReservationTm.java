@@ -13,8 +13,8 @@ import javafx.scene.control.Button;
 public class ReservationTm {
     private String trainId;
     private String type;
-    private String noOfSeats;
-    private String ticketPrice;
-    private String tot;
+    private int noOfSeats;
+    private double ticketPrice;
+    private double tot;
     private Button btn;
 }

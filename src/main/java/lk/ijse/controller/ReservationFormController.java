@@ -1,73 +1,160 @@
 package lk.ijse.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.PassengerDto;
+import lk.ijse.dto.ReservationDto;
 import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.dto.TrainDto;
 import lk.ijse.model.PassengerModel;
 import lk.ijse.model.PlaceReservationModel;
 import lk.ijse.model.ReservationModel;
 import lk.ijse.model.TrainModel;
+import lk.ijse.model.ReservationDetailModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ReservationFormController {
 
-    public JFXTextField txtId;
-    public JFXTextField txtPassengerID;
-    public JFXTextField txtTrainID;
-    public TableView tblReservation;
-    public TableColumn colTicketID;
-    public TableColumn colPassengerID;
-    public TableColumn <?,?>colTrainID;
+        @FXML
+        private AnchorPane root;
 
-    public AnchorPane root;
-    public Label lblReservationId;
-    public JFXComboBox passengerId;
-    public JFXDatePicker lblOrderDate;
-    public Label lblSeatsAvailable;
-    public Label lblUnitPrice;
-    public Label lblType;
-    public Label lblNetTotal;
-    public JFXComboBox TrainId;
-    public TableColumn colTrainId;
-    public TableColumn colType;
-    public TableColumn colNoOfSeats;
-    public TableColumn colUnitPrice;
-    public TableColumn <?,?>colTotal;
-    public TableColumn colAction;
-    public JFXButton btnAddToCart;
-    public TableView tblOrderCart;
-    public TextField txtQty;
-    public Label lblDate;
-    public Label passengerName;
+        @FXML
+        private Label lblReservationId;
 
-    private PassengerModel passengerModel = new PassengerModel();
-    private ReservationModel reservationModel = new ReservationModel();
-    private TrainModel trainModel = new TrainModel();
-    private PlaceReservationModel placeReservationModel = new PlaceReservationModel();
-    private ObservableList<ReservationTm> obList = FXCollections.observableArrayList();
+        @FXML
+        private JFXComboBox<String> cmbPassengerId;
 
-    public void btnNewPassengerOnAction(ActionEvent actionEvent) throws IOException {
-        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/passenger_form.fxml"));
+        @FXML
+        private JFXComboBox<String> cmbTrainId;
+
+        @FXML
+        private TextField txtQty;
+
+        @FXML
+        private TableView<ReservationTm> tblOrderCart;
+
+        @FXML
+        private TableColumn<?, ?> colTrainId;
+
+        @FXML
+        private TableColumn<?, ?> colType;
+
+        @FXML
+        private TableColumn<?, ?> colNoOfSeats;
+
+        @FXML
+        private TableColumn<?, ?> colUnitPrice;
+
+        @FXML
+        private TableColumn<?, ?> colTotal;
+
+        @FXML
+        private TableColumn<?, ?> colAction;
+
+        @FXML
+        private JFXButton btnAddToCart;
+
+        @FXML
+        private Label lblNetTotal;
+
+        @FXML
+        private Label lblType;
+
+        @FXML
+        private Label lblUnitPrice;
+
+        @FXML
+        private Label lblSeatsAvailable;
+
+        @FXML
+        private Label lblDate;
+
+        @FXML
+        private Label passengerName;
+
+        private PassengerModel passengerModel = new PassengerModel();
+        private TrainModel trainModel = new TrainModel();
+        private ReservationModel reservationModel = new ReservationModel();
+        private PlaceReservationModel placeReservationModel = new PlaceReservationModel();
+        private ObservableList<ReservationTm> obList = FXCollections.observableArrayList();
+        public void initialize() {
+            setCellValueFactory();
+            generateNewId();
+            setDate();
+            loadPassengerId();
+            loadTrainId();
+        }
+
+    private void setCellValueFactory() {
+            colTrainId.setCellValueFactory(new PropertyValueFactory<>("trainId"));
+            colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+            colNoOfSeats.setCellValueFactory(new PropertyValueFactory<>("noOfSeats"));
+            colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("ticketPrice"));
+            colTotal.setCellValueFactory(new PropertyValueFactory<>("tot"));
+            colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
+    }
+
+    private void generateNewId() {
+        try {
+            String id = reservationModel.generateNextOrderId();
+            lblReservationId.setText(id);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void loadTrainId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<TrainDto> itemDtos = TrainModel.getAllTrain();
+
+            for (TrainDto dto : itemDtos) {
+                obList.add(dto.getTrainId());
+            }
+            cmbTrainId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadPassengerId() {
+            ObservableList<String> obList = FXCollections.observableArrayList();
+            try {
+                List<PassengerDto> passengerDtos = passengerModel.getAllPassengers();
+
+                for (PassengerDto passengerDto : passengerDtos) {
+                    obList.add(passengerDto.getId());
+                }
+                cmbPassengerId.setItems(obList);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+    }
+
+    private void setDate() {
+        lblDate.setText(String.valueOf(LocalDate.now()));
+    }
+
+    @FXML
+    void btnNewPassengerOnAction(ActionEvent event) throws IOException {
+        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/passenger_add_form.fxml"));
         Scene scene = new Scene(anchorPane);
 
         Stage stage = new Stage();
@@ -77,154 +164,15 @@ public class ReservationFormController {
         stage.show();
     }
 
-    private void setRemoveBtnAction(Button btn) {
-        btn.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
-
-            if (type.orElse(no) == yes) {
-                int focusedIndex = tblOrderCart.getSelectionModel().getSelectedIndex();
-
-                obList.remove(focusedIndex);
-                tblOrderCart.refresh();
-                calculateTotal();
-            }
-        });
-    }
-
-    private void calculateTotal() {
-        if(tblOrderCart.getItems()!=null && tblOrderCart.getItems().size()!=0){
-            double total = 0;
-            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-                total += (double) colTotal.getCellData(i);
-            }
-            lblNetTotal.setText(String.valueOf(total));
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Cart is empty!").show();
-
-        }    }
-
-    public void initialize() {
-        setCellValueFactory();
-        generateNextOrderId();
-        loadPassengerIds();
-        loadTrainIds();
-        setDate();
-    }
-
-    private void setDate() {
-        lblDate.setText(LocalDate.now().toString());
-    }
-
-    private void loadPassengerIds() {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<PassengerDto> itemDtos = passengerModel.getAllPassengers();
-
-            for (PassengerDto dto : itemDtos) {
-                obList.add(dto.getId());
-            }
-            passengerId.setItems(obList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void loadTrainIds() {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<TrainDto> itemDtos = TrainModel.getAllTrain();
-
-            for (TrainDto dto : itemDtos) {
-                obList.add(dto.getTrainId());
-            }
-            TrainId.setItems(obList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void generateNextOrderId() {
-        try {
-            String reservationId = ReservationModel.generateNextOrderId();
-            lblReservationId.setText(reservationId);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-    }
-
-    private void setCellValueFactory() {
-    }
-
-    private void clearFields() {
-        txtId.clear();
-        txtPassengerID.clear();
-        txtTrainID.clear();
-    }
-
-    public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
+    @FXML
+    void btnBackOnAction(ActionEvent event) throws IOException {
         this.root.getChildren().clear();
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
     }
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-        String reservationId = lblReservationId.getText();
-        LocalDate date = lblOrderDate.getValue();
-        String passengerId = txtPassengerID.getText();
-
-        List<ReservationTm> items = new ArrayList<>();
-        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-            ReservationTm item = obList.get(i);
-
-            items.add(item);
-        }
-    }
-
-    public void btnAddToCartOnAction(ActionEvent actionEvent) {
-        String trainId = (String) TrainId.getValue();
-        String type = lblType.getText();
-        String qty = txtQty.getText();
-        String unitPrice = lblUnitPrice.getText();
-        double tot = Double.parseDouble(lblUnitPrice.getText()) * Double.parseDouble(txtQty.getText()) ;
-        String total = String.valueOf(tot);
-        Button btnRemove = new Button("Remove");
-
-        setRemoveBtnAction(btnRemove);
-        btnRemove.setCursor(Cursor.HAND);
-
-        if (!obList.isEmpty()){
-            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
-                if (colTrainID.getCellData(i).equals(trainId)) {
-                    int col_qty = (int) colNoOfSeats.getCellData(i);
-                    qty += col_qty;
-                    tot = Double.parseDouble(unitPrice) * Double.parseDouble(qty);
-
-                    obList.get(i).setNoOfSeats(qty);
-                    obList.get(i).setTot(String.valueOf(tot));
-                    tblOrderCart.refresh();
-                    calculateTotal();
-                    return;
-                }
-            }
-        }
-        var tm = new ReservationTm(trainId, type, qty, unitPrice, total, btnRemove );
-
-        obList.add(tm);
-
-        tblOrderCart.setItems(obList);
-        calculateTotal();
-        clearFields();
-        txtQty.clear();
-    }
-
-    public void txtQtyOnAction(ActionEvent actionEvent) {
-        btnAddToCartOnAction(actionEvent);
-    }
-
-    public void TrainOnAction(ActionEvent actionEvent) {
-        String code = (String) TrainId.getValue();
+    @FXML
+    void TrainOnAction(ActionEvent event) {
+        String code = cmbTrainId.getValue();
 
         txtQty.requestFocus();
         try {
@@ -237,8 +185,9 @@ public class ReservationFormController {
         }
     }
 
-    public void passengerOnAction(ActionEvent actionEvent) {
-        String id = (String) passengerId.getValue();
+    @FXML
+    void passengerOnAction(ActionEvent event) {
+        String id = cmbPassengerId.getValue();
 
         try {
             PassengerDto dto = passengerModel.searchPassenger(id);
@@ -247,4 +196,89 @@ public class ReservationFormController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void txtQtyOnAction(ActionEvent event) {
+        btnAddToCartOnAction(event);
+    }
+
+    private void calculateTotal() {
+    }
+
+    private void setRemoveButtonAction(Button btn, String trainId) {
+        btn.setOnAction(event -> {
+            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                ReservationTm tm = obList.get(i);
+
+                if (tm.getTrainId().equals(trainId)) {
+                    tblOrderCart.getItems().remove(i);
+                    break;
+                }
+            }
+        });
+    }
+
+    @FXML
+    void btnPlaceOrderOnAction(ActionEvent event) {
+        String id = lblReservationId.getText();
+        LocalDate date = LocalDate.parse(lblDate.getText());
+        String passengerId = cmbPassengerId.getValue();
+
+        List<ReservationTm> tmList = new ArrayList<>();
+        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+            ReservationTm tm = obList.get(i);
+
+            tmList.add(tm);
+        }
+
+        System.out.println("Place Reservation form controller : " + tmList);
+
+        var placeReservationDto = new ReservationDto(id, date, passengerId, tmList);
+        try {
+            boolean isSuccessful = PlaceReservationModel.placeReservation(placeReservationDto);
+            if (isSuccessful) {
+                new Alert(Alert.AlertType.INFORMATION, "Reservation Placed Successfully").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void btnAddToCartOnAction(ActionEvent event) {
+        String trainId = cmbTrainId.getValue();
+        String type = lblType.getText();
+        int qty = Integer.parseInt(txtQty.getText());
+        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+        double total = qty * unitPrice;
+        Button btn = new Button("Remove");
+
+        setRemoveButtonAction(btn, trainId);
+
+        if (!obList.isEmpty()) {
+            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                if (colTrainId.getCellData(i).equals(trainId)) {
+                    int col_qty = (int) colNoOfSeats.getCellData(i);
+                    qty += col_qty;
+                    total = qty * unitPrice;
+
+                    obList.get(i).setNoOfSeats(qty);
+                    obList.get(i).setTot(total);
+
+                    calculateTotal();
+                    tblOrderCart.refresh();
+                    return;
+                }
+            }
+        }
+
+        var tm = new ReservationTm(trainId, type, qty, unitPrice, total, btn);
+
+        obList.add(tm);
+
+        tblOrderCart.setItems(obList);
+        calculateTotal();
+        txtQty.clear();
+    }
 }
+

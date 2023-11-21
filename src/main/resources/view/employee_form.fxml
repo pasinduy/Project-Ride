@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" style="-fx-background-color: #84bbe1;" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeFormController">
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeFormController">
    <children>
       <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back">
          <graphic>
@@ -35,7 +35,7 @@
             <TableColumn fx:id="colContact" prefWidth="276.0" text="Contact" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="50.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="1430.0" layoutY="132.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="135.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="1430.0" layoutY="217.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="220.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="1430.0" layoutY="302.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="305.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
+      <JFXButton buttonType="RAISED" layoutX="1430.0" layoutY="387.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -79,18 +79,6 @@
             <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icon/delete.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="390.0" onAction="#btnOnActionReport" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Report" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/icons8-report-50.png" />
                </image>
             </ImageView>
          </graphic>

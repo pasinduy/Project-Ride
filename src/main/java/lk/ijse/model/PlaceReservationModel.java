@@ -12,24 +12,23 @@ public class PlaceReservationModel {
     private TrainModel trainModel = new TrainModel();
     private ReservationDetailModel reservationDetailModel = new ReservationDetailModel();
 
-    public boolean placeReservation(ReservationDto reservationDto) throws SQLException {
-        System.out.println(reservationDto);
 
-        String reservationId = reservationDto.getReservationId();
-        String passengerId = reservationDto.getPassengerId();
-        LocalDate date = reservationDto.getOrderDate();
+    public boolean placeReservation(ReservationDto placeReservationDto) throws SQLException, ClassNotFoundException {
+        String reservationId = placeReservationDto.getReservationId();
+        LocalDate orderDate = placeReservationDto.getOrderDate();
+        String passengerId = placeReservationDto.getPassengerId();
 
         Connection connection = null;
         try {
             connection = DbConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
 
-            boolean isReservationSaved = reservationModel.saveOrder(reservationId, passengerId, date);
-            if (isReservationSaved) {
-                boolean isUpdated = trainModel.updateTrains(reservationDto.getReservationTmList());
-                if(isUpdated) {
-                    boolean isReservationDetailSaved = reservationDetailModel.saveOrderDetails(reservationDto.getReservationId(), reservationDto.getReservationTmList());
-                    if (isReservationDetailSaved) {
+            boolean isReservationSaved = ReservationModel.saveOrder(reservationId, passengerId, orderDate);
+            if (isReservationSaved){
+                boolean isUpdated = trainModel.updateTrains(placeReservationDto.getReservationTmList());
+                if (isUpdated){
+                    boolean isReservationDetailSaved = reservationDetailModel.saveOrderDetails(placeReservationDto.getReservationTmList(), reservationId);
+                    if (isReservationDetailSaved){
                         connection.commit();
                     }
                 }

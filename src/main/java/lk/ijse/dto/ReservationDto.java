@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 public class ReservationDto {
     private String reservationId;
-    private String passengerId;
     private LocalDate orderDate;
+    private String passengerId;
     private List<ReservationTm> reservationTmList = new ArrayList<>();
 }

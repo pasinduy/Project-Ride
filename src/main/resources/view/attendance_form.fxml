@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.AttendanceFormController">
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AttendanceFormController">
 
     <children>
         <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back">
@@ -24,23 +20,21 @@
                     </image>
                 </ImageView>
             </graphic></JFXButton>
-        <JFXTextField fx:id="txtId" layoutX="541.0" layoutY="135.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Employee ID" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtAge" layoutX="541.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Age" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtName" layoutX="956.0" layoutY="135.0" prefHeight="50.0" prefWidth="250.0" promptText="Name" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtGender" layoutX="956.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Gender" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtAddress" layoutX="541.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Address" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtContact" layoutX="956.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Contact" stylesheets="@../styles/dashboard.css" />
-        <TableView fx:id="tblPassenger" layoutY="524.0" onMouseClicked="#tblPassengerOnMouseClicked" prefHeight="558.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;">
+        <JFXTextField fx:id="txtEmployeeID" layoutX="541.0" layoutY="135.0" prefHeight="50.0" prefWidth="250.0" promptText="Employee ID" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtMonth" layoutX="541.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Month" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtAttendanceID" layoutX="956.0" layoutY="135.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Attendance ID" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtDate" layoutX="956.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="Date" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtStatus" layoutX="541.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Work Status" stylesheets="@../styles/dashboard.css" />
+        <TableView fx:id="tblPassenger" layoutX="119.0" layoutY="487.0" onMouseClicked="#tblPassengerOnMouseClicked" prefHeight="551.0" prefWidth="1345.0" style="-fx-background-color: #84bbe1;">
             <columns>
                 <TableColumn fx:id="colID" prefWidth="242.99993896484375" text="Employee ID" />
-                <TableColumn fx:id="colName" minWidth="0.0" prefWidth="300.0" text="Name" />
-                <TableColumn fx:id="colAge" prefWidth="180.0" text="Age" />
-                <TableColumn fx:id="colGender" prefWidth="170.0" text="Gender" />
-                <TableColumn fx:id="colAddress" prefWidth="450.0" text="Address" />
-                <TableColumn fx:id="colContact" prefWidth="276.0" text="Contact" />
+                <TableColumn fx:id="colAttendanceID" minWidth="0.0" prefWidth="300.0" text="Attendance ID" />
+                <TableColumn fx:id="colMonth" prefWidth="239.0" text="Month" />
+                <TableColumn fx:id="colDate" prefWidth="275.0" text="Date" />
+                <TableColumn fx:id="colStatus" prefWidth="286.0" text="Work Status" />
             </columns>
         </TableView>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="50.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1434.0" layoutY="132.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -52,7 +46,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="135.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1434.0" layoutY="217.0" onAction="#btnOnActionUpdate" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text=" Update" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -64,7 +58,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="220.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1434.0" layoutY="302.0" onAction="#btnOnActionClear" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Clear" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -76,7 +70,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="305.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
+        <JFXButton buttonType="RAISED" layoutX="1434.0" layoutY="387.0" onAction="#btnOnActionDelete" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Delete" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -84,18 +78,6 @@
                 <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../icon/delete.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </JFXButton>
-        <JFXButton buttonType="RAISED" layoutX="1435.0" layoutY="390.0" onAction="#btnOnActionReport" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Report" textAlignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/icons8-report-50.png" />
                     </image>
                 </ImageView>
             </graphic>

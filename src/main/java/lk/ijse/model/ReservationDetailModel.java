@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ReservationDetailModel {
-    public boolean saveOrderDetails(String reservationId, List<ReservationTm> reservationTmList) throws SQLException {
+    public boolean saveOrderDetails(List<ReservationTm> reservationTmList, String reservationId) throws SQLException {
         for(ReservationTm tm : reservationTmList) {
             if(!saveOrderDetails(reservationId, tm)) {
                 return false;
@@ -26,8 +26,8 @@ public class ReservationDetailModel {
 
         pstm.setString(1, reservationId);
         pstm.setString(2, tm.getTrainId());
-        pstm.setString(3, String.valueOf(tm.getNoOfSeats()));
-        pstm.setString(4, tm.getTot());
+        pstm.setInt(3, tm.getNoOfSeats());
+        pstm.setDouble(4, tm.getTicketPrice());
 
         return pstm.executeUpdate() > 0;
     }
