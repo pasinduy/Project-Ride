@@ -1,6 +1,7 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.Tm.DeliveryTm;
 import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.dto.TrainDto;
 
@@ -55,6 +56,16 @@ public class TrainModel {
         for(ReservationTm tm : reservationTmList) {
             System.out.println("Train Model " + tm);
             if(!updateQty(tm.getTrainId(), tm.getNoOfSeats())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean updatesTrains(List<DeliveryTm> DeliveryTmList) throws SQLException {
+        for(DeliveryTm tm : DeliveryTmList) {
+            System.out.println("Train Model " + tm);
+            if(!updateQty(tm.getTrainId(), Integer.parseInt(tm.getWeight()))) {
                 return false;
             }
         }

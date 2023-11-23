@@ -1,8 +1,6 @@
 package lk.ijse.dto.Tm;
 
 import lombok.*;
-
-import java.awt.*;
 import javafx.scene.control.Button;
 
 @Getter

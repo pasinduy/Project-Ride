@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ScheduleFormController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ScheduleFormController">
 
     <children>
         <JFXButton alignment="BOTTOM_CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#btnOnActionBack" prefHeight="99.0" prefWidth="103.0" text="Back">
@@ -23,18 +21,19 @@
                     </image>
                 </ImageView>
             </graphic></JFXButton>
-        <JFXTextField fx:id="txtId" layoutX="500.0" layoutY="100.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Schedule ID" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtStartStation" layoutX="500.0" layoutY="300.0" prefHeight="50.0" prefWidth="250.0" promptText="Starting Station" stylesheets="@../styles/dashboard.css" />
-        <JFXTextField fx:id="txtEndStation" layoutX="500.0" layoutY="400.0" prefHeight="50.0" prefWidth="250.0" promptText="Ending Station" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtScheduleId" layoutX="499.0" layoutY="136.0" onAction="#txtOnActionSearch" prefHeight="50.0" prefWidth="250.0" promptText="Schedule ID" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtStartStation" layoutX="499.0" layoutY="236.0" prefHeight="50.0" prefWidth="250.0" promptText="Departure Station" stylesheets="@../styles/dashboard.css" />
+        <JFXTextField fx:id="txtEndStation" layoutX="499.0" layoutY="336.0" prefHeight="50.0" prefWidth="250.0" promptText="Arrival Station" stylesheets="@../styles/dashboard.css" />
+      <JFXTextField fx:id="txtStartTime" layoutX="955.0" layoutY="236.0" prefHeight="50.0" prefWidth="250.0" promptText="Departure Time" stylesheets="@../styles/dashboard.css" />
+      <JFXTextField fx:id="txtEndTime" layoutX="955.0" layoutY="336.0" prefHeight="50.0" prefWidth="250.0" promptText="Arrival Time" stylesheets="@../styles/dashboard.css" />
         <TableView fx:id="tblPassenger" layoutY="524.0" onMouseClicked="#tblScheduleOnMouseClicked" prefHeight="558.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;">
             <columns>
                 <TableColumn fx:id="colID" prefWidth="242.99993896484375" text="Search ID" />
                 <TableColumn fx:id="colTrainId" minWidth="0.0" prefWidth="247.0" text="Train ID" />
-                <TableColumn fx:id="colStartStation" prefWidth="233.0" text="Starting Station" />
-                <TableColumn fx:id="colEndingStation" prefWidth="265.0" text="Ending Station" />
-                <TableColumn fx:id="colDate" prefWidth="226.0" text="Date" />
-                <TableColumn fx:id="colStartTime" prefWidth="195.0" text="Start Time" />
-            <TableColumn fx:id="colEndTime" prefWidth="210.0" text="End Time" />
+                <TableColumn fx:id="colStartStation" prefWidth="314.0" text="Departure Station" />
+                <TableColumn fx:id="colEndingStation" prefWidth="314.0" text="Arrival Station" />
+                <TableColumn fx:id="colStartTime" prefWidth="255.0" text="Departure Time" />
+            <TableColumn fx:id="colEndTime" prefWidth="246.0" text="Arrival Time" />
             </columns>
         </TableView>
         <JFXButton buttonType="RAISED" layoutX="1431.0" layoutY="121.0" onAction="#btnOnActionAdd" prefHeight="53.0" prefWidth="126.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
@@ -90,9 +89,6 @@
                 <Image url="@../icon/icons8-calendar-64.png" />
             </image>
         </ImageView>
-      <ComboBox fx:id="ComboTrainId" layoutX="500.0" layoutY="200.0" prefHeight="50.0" prefWidth="250.0" promptText="Train ID" stylesheets="@../styles/dashboard.css" />
-      <JFXDatePicker fx:id="txtDate" defaultColor="BLACK" layoutX="956.0" layoutY="150.0" prefHeight="50.0" prefWidth="250.0" promptText="Date" stylesheets="@../styles/dashboard.css" />
-      <JFXTimePicker fx:id="txtStartTime" defaultColor="BLACK" layoutX="956.0" layoutY="250.0" prefHeight="50.0" prefWidth="250.0" promptText="Start Time" stylesheets="@../styles/dashboard.css" />
-      <JFXTimePicker fx:id="txtEndTime" defaultColor="BLACK" layoutX="956.0" layoutY="350.0" prefHeight="50.0" prefWidth="250.0" promptText="End Time" stylesheets="@../styles/dashboard.css" />
+      <ComboBox fx:id="ComboTrainId" layoutX="955.0" layoutY="136.0" prefHeight="50.0" prefWidth="250.0" promptText="Train ID" stylesheets="@../styles/dashboard.css" />
     </children>
 </AnchorPane>

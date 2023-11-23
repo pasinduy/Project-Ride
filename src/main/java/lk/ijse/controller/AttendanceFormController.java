@@ -3,10 +3,14 @@ package lk.ijse.controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class AttendanceFormController {
 
@@ -47,17 +51,37 @@ public class AttendanceFormController {
     private TableColumn<?, ?> colStatus;
 
     @FXML
-    void btnOnActionAdd(ActionEvent event) {
+    void btnOnActionBack(ActionEvent event) throws IOException {
+        this.root.getChildren().clear();
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/main_dashboard_form.fxml")));
+    }
+
+    public void initialize() {
+        setCellValueFactory();
+        loadAllAttendance();
+        loadTrainId();
+    }
+
+    private void setCellValueFactory() {
+        colID.setCellValueFactory(new PropertyValueFactory<>("trainId"));
+        colAttendanceID.setCellValueFactory(new PropertyValueFactory<>("attendanceId"));
 
     }
 
-    @FXML
-    void btnOnActionBack(ActionEvent event) {
+    private void loadAllAttendance() {
 
+    }
+
+    private void loadTrainId() {
     }
 
     @FXML
     void btnOnActionClear(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnActionAdd(ActionEvent event) {
 
     }
 

@@ -280,5 +280,9 @@ public class ReservationFormController {
         calculateTotal();
         txtQty.clear();
     }
+
+    public void btnPrintBillOnAction(ActionEvent actionEvent) {
+
+    }
 }
 

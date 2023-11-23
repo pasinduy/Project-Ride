@@ -9,11 +9,11 @@ import java.time.LocalDate;
 
 public class PlaceReservationModel {
     private ReservationModel reservationModel = new ReservationModel();
-    private TrainModel trainModel = new TrainModel();
-    private ReservationDetailModel reservationDetailModel = new ReservationDetailModel();
+    private static TrainModel trainModel = new TrainModel();
+    private static ReservationDetailModel reservationDetailModel = new ReservationDetailModel();
 
 
-    public boolean placeReservation(ReservationDto placeReservationDto) throws SQLException, ClassNotFoundException {
+    public static boolean placeReservation(ReservationDto placeReservationDto) throws SQLException, ClassNotFoundException {
         String reservationId = placeReservationDto.getReservationId();
         LocalDate orderDate = placeReservationDto.getOrderDate();
         String passengerId = placeReservationDto.getPassengerId();
