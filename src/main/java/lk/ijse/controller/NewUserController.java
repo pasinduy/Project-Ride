@@ -12,6 +12,7 @@ import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class NewUserController {
     public AnchorPane root;
@@ -33,11 +34,14 @@ public class NewUserController {
     }
 
     public void btnAddUserOnAction(ActionEvent actionEvent) {
-        String email = txtEmail.getText();
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
+        boolean isValid = validateInput();
 
-        var dto = new UserDto(email, username, password);
+        if (isValid){
+        UserDto dto = new UserDto(
+                txtUsername.getText(),
+                txtPassword.getText(),
+                txtEmail.getText()
+        );
 
         try {
             boolean isSaved = model.addUser(dto);
@@ -49,8 +53,31 @@ public class NewUserController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        }
     }
 
+    private boolean validateInput() {
+        boolean matchEmail = Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", txtEmail.getText());
+        boolean matchId = Pattern.matches("[U]\\d{3,}", txtUsername.getText());
+        boolean matchPassword = Pattern.matches("^[a-zA-Z]\\w{3,14}$", txtPassword.getText());
+
+        if (!matchEmail) {
+            new Alert(Alert.AlertType.ERROR, "Please Enter A Valid Email like \"example@example.com\" ").show();
+            return false;
+        }
+
+        if (!matchId) {
+            new Alert(Alert.AlertType.ERROR, "Enter a valid ID like \"U001\"").show();
+            return false;
+        }
+
+        if (!matchPassword) {
+            new Alert(Alert.AlertType.ERROR, "The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used").show();
+            return false;
+        }
+
+        return true;
+    }
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/login_form.fxml"));
         Scene scene = new Scene(anchorPane);

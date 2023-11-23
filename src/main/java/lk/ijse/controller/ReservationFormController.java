@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.db.DbConnection;
 import lk.ijse.dto.PassengerDto;
 import lk.ijse.dto.ReservationDto;
 import lk.ijse.dto.Tm.ReservationTm;
@@ -23,8 +24,13 @@ import lk.ijse.model.PlaceReservationModel;
 import lk.ijse.model.ReservationModel;
 import lk.ijse.model.TrainModel;
 import lk.ijse.model.ReservationDetailModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -281,7 +287,15 @@ public class ReservationFormController {
         txtQty.clear();
     }
 
-    public void btnPrintBillOnAction(ActionEvent actionEvent) {
+    public void btnPrintBillOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("reports/reservstion.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(
+                jasperReport,
+                null,
+                DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
 
     }
 }
