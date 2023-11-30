@@ -45,8 +45,9 @@ public class UserModel {
                     resultSet.getString(2),
                     resultSet.getString(3)
             );
+        }else {
+            return null;
         }
-        return null;
     }
 
     public boolean addUser(UserDto dto) throws SQLException {

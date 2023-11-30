@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
@@ -28,8 +29,9 @@ public class LoginFormController {
     public AnchorPane root;
 
     public void btnOnActionLogin(ActionEvent actionEvent) throws IOException {
-        String user_name = txtUsername.getSelectionModel().getSelectedItem().toString();
         try {
+            String user_name = txtUsername.getSelectionModel().getSelectedItem().toString();
+
             UserDto user = UserModel.searchUser(user_name);
 
             if (user.getPassword().equals(txtPassword.getText())) {
@@ -42,8 +44,8 @@ public class LoginFormController {
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid Password").show();
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,"Please Select Username!").show();
         }
     }
 
@@ -59,7 +61,20 @@ public class LoginFormController {
         loadId();
     }
 
-    public void txtOnActionLogin() {}
+    public void txtOnActionLogin() {
+        try {
+            String user_name = txtUsername.getSelectionModel().getSelectedItem().toString();
+
+            UserDto user = UserModel.searchUser(user_name);
+
+            if (user.getPassword().equals(txtPassword.getText())) {
+                Stage currentStage = (Stage) root.getScene().getWindow();
+                currentStage.close();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,"Please Select Username!").show();
+        }
+    }
 
     public void loadId(){
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -76,6 +91,6 @@ public class LoginFormController {
     }
     public void btnOnActionForgot(ActionEvent actionEvent) throws IOException {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/new_user_form.fxml")));
+        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/new_user_form.fxml")));
     }
 }

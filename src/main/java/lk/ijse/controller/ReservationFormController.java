@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.CartDto;
 import lk.ijse.dto.PassengerDto;
 import lk.ijse.dto.ReservationDto;
 import lk.ijse.dto.Tm.ReservationTm;
@@ -209,6 +210,11 @@ public class ReservationFormController {
     }
 
     private void calculateTotal() {
+        double total = 0;
+        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+            ReservationTm tm = obList.get(i);
+            total += tm.getTot();
+        }
     }
 
     private void setRemoveButtonAction(Button btn, String trainId) {
@@ -230,11 +236,12 @@ public class ReservationFormController {
         LocalDate date = LocalDate.parse(lblDate.getText());
         String passengerId = cmbPassengerId.getValue();
 
-        List<ReservationTm> tmList = new ArrayList<>();
+        List<CartDto> tmList = new ArrayList<>();
+
         for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
             ReservationTm tm = obList.get(i);
-
-            tmList.add(tm);
+            CartDto dto = new CartDto(tm.getTrainId(), tm.getType(), tm.getNoOfSeats(), tm.getTicketPrice(), tm.getTot());
+            tmList.add(dto);
         }
 
         System.out.println("Place Reservation form controller : " + tmList);
@@ -288,7 +295,7 @@ public class ReservationFormController {
     }
 
     public void btnPrintBillOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("reports/reservstion.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("reports/reservation.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
         JasperPrint jasperPrint = JasperFillManager.fillReport(
@@ -296,7 +303,6 @@ public class ReservationFormController {
                 null,
                 DbConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint,false);
-
     }
 }
 

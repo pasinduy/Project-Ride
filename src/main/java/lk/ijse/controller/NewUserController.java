@@ -38,9 +38,9 @@ public class NewUserController {
 
         if (isValid){
         UserDto dto = new UserDto(
+                txtEmail.getText(),
                 txtUsername.getText(),
-                txtPassword.getText(),
-                txtEmail.getText()
+                txtPassword.getText()
         );
 
         try {

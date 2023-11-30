@@ -77,6 +77,13 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.vladsch.javafx-webview-debugger/javafx-webview-debugger -->
+        <dependency>
+            <groupId>com.vladsch.javafx-webview-debugger</groupId>
+            <artifactId>javafx-webview-debugger</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

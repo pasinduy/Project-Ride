@@ -25,13 +25,13 @@ public class PlaceReservationModel {
 
             boolean isReservationSaved = ReservationModel.saveOrder(reservationId, passengerId, orderDate);
             if (isReservationSaved){
-                boolean isUpdated = trainModel.updateTrains(placeReservationDto.getReservationTmList());
+                /*boolean isUpdated = trainModel.updateTrains(placeReservationDto.getReservationTmList());
                 if (isUpdated){
                     boolean isReservationDetailSaved = reservationDetailModel.saveOrderDetails(placeReservationDto.getReservationTmList(), reservationId);
                     if (isReservationDetailSaved){
                         connection.commit();
                     }
-                }
+                }*/
             }
         } catch (SQLException e) {
             connection.rollback();

@@ -17,16 +17,14 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.InputStream;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lk.ijse.dto.DeliveryDto;
-import lk.ijse.dto.PassengerDto;
-import lk.ijse.dto.ReservationDto;
+import lk.ijse.dto.*;
 import lk.ijse.dto.Tm.DeliveryTm;
 import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.model.*;
@@ -77,9 +75,6 @@ public class DeliveryFormController {
 
         @FXML
         private Label passengerName;
-
-        @FXML
-        private DatePicker lblDeliveryDate;
         private PassengerModel passengerModel = new PassengerModel();
         private TrainModel trainModel = new TrainModel();
         private DeliveryModel deliveryModel = new DeliveryModel();
@@ -95,14 +90,40 @@ public class DeliveryFormController {
         }
 
     private void loadTrainId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<TrainDto> itemDtos = TrainModel.getAllTrain();
 
+            for (TrainDto dto : itemDtos) {
+                obList.add(dto.getTrainId());
+            }
+            cmbTrainId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void loadPassengerId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<PassengerDto> passengerDtos = passengerModel.getAllPassengers();
+
+            for (PassengerDto passengerDto : passengerDtos) {
+                obList.add(passengerDto.getId());
+            }
+            cmbPassengerId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void generateNewId() {
-
+        try {
+            String id = DeliveryModel.generateNextOrderId();
+            lblDeliveryID.setText(id);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void setDate() {
@@ -122,13 +143,22 @@ public class DeliveryFormController {
     void TrainOnAction(ActionEvent event) {String code = cmbTrainId.getValue();}
 
     private void setRemoveButtonAction(Button btn, String trainId) {
+        btn.setOnAction(event -> {
+            for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+                DeliveryTm tm = obList.get(i);
 
+                if (tm.getTrainId().equals(trainId)) {
+                    tblOrderCart.getItems().remove(i);
+                    break;
+                }
+            }
+        });
     }
 
         @FXML
         void btnAddToCartOnAction(ActionEvent event) {
             String trainId = cmbTrainId.getValue();
-            String date = lblDeliveryDate.getValue().toString();
+            LocalDate date = LocalDate.parse(lblDate.getText());
             double weight = Double.parseDouble(txtWeight.getText());
             double price = 0.0;
 
@@ -141,7 +171,7 @@ public class DeliveryFormController {
             } else {
                 price = 400 * weight;
             }
-            
+
             String total = price + "";
             Button btn = new Button("Remove");
             setRemoveButtonAction(btn, trainId);
@@ -158,7 +188,7 @@ public class DeliveryFormController {
                 }
             }
 
-            var tm = new DeliveryTm(trainId, date, String.valueOf(weight), String.valueOf(price), total, btn);
+            var tm = new DeliveryTm(trainId, date, weight, price, total, btn);
 
             obList.add(tm);
 
@@ -167,6 +197,7 @@ public class DeliveryFormController {
         }
 
     private void calculateTotal() {
+
     }
 
     @FXML
@@ -203,17 +234,20 @@ public class DeliveryFormController {
         void btnPlaceOrderOnAction(ActionEvent event) {
             String id = lblDeliveryID.getText();
             String passengerId = cmbPassengerId.getValue();
+            LocalDate date = LocalDate.parse(lblDate.getText());
 
-            List<DeliveryTm> tmList = new ArrayList<>();
+            List<CartDto2> tmList = new ArrayList<>();
+
             for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
                 DeliveryTm tm = obList.get(i);
-
-                tmList.add(tm);
+                CartDto2 dto = new CartDto2(id, tm.getTrainId(), tm.getWeight(), tm.getPrice());
+                tmList.add(dto);
             }
 
             System.out.println("Place Delivery form controller : " + tmList);
 
-            var placeDeliveryDto = new DeliveryDto(id, passengerId, tmList);
+            var placeDeliveryDto = new DeliveryDto(id, passengerId, date, tmList);
+
             try {
                 boolean isSuccessful = PlaceDeliveryModel.placeDelivery(placeDeliveryDto);
                 if (isSuccessful) {

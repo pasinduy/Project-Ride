@@ -34,13 +34,13 @@ public class ReservationModel {
         }
     }
 
-    public static boolean saveOrder(String orderId, String customerId, LocalDate date) throws SQLException {
+    public static boolean saveOrder(String reservationId, String passengerId, LocalDate date) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO orders VALUES(?, ?, ?)";
+        String sql = "INSERT INTO reservation VALUES(?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, orderId);
-        pstm.setString(2, customerId);
+        pstm.setString(1, reservationId);
+        pstm.setString(2, passengerId);
         pstm.setDate(3, Date.valueOf(date));
 
         return pstm.executeUpdate() > 0;

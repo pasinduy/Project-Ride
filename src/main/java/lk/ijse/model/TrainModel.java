@@ -1,8 +1,8 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
-import lk.ijse.dto.Tm.DeliveryTm;
-import lk.ijse.dto.Tm.ReservationTm;
+import lk.ijse.dto.CartDto;
+import lk.ijse.dto.CartDto2;
 import lk.ijse.dto.TrainDto;
 
 import java.sql.Connection;
@@ -36,6 +36,9 @@ public class TrainModel {
         return dtoList;
     }
 
+    public static void getCountTrain() {
+    }
+
     public boolean addTrain(TrainDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -52,8 +55,8 @@ public class TrainModel {
     }
 
 
-    public boolean updateTrains(List<ReservationTm> reservationTmList) throws SQLException {
-        for(ReservationTm tm : reservationTmList) {
+    public boolean updateTrains(List<CartDto> cartDtos) throws SQLException {
+        for(CartDto tm : cartDtos) {
             System.out.println("Train Model " + tm);
             if(!updateQty(tm.getTrainId(), tm.getNoOfSeats())) {
                 return false;
@@ -62,13 +65,7 @@ public class TrainModel {
         return true;
     }
 
-    public boolean updatesTrains(List<DeliveryTm> DeliveryTmList) throws SQLException {
-        for(DeliveryTm tm : DeliveryTmList) {
-            System.out.println("Train Model " + tm);
-            if(!updateQty(tm.getTrainId(), Integer.parseInt(tm.getWeight()))) {
-                return false;
-            }
-        }
+    public boolean updatesTrains(List<CartDto2> DeliveryTmList) throws SQLException {
         return true;
     }
 

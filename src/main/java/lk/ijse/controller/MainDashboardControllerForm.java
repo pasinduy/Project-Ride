@@ -1,7 +1,9 @@
 package lk.ijse.controller;
 
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.model.TrainModel;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -13,7 +15,30 @@ public class MainDashboardControllerForm {
     public AnchorPane root;
 
     public void initialize() {
-        lblTime.setText(new SimpleDateFormat("hh:mm:ss a").format(new Time(System.currentTimeMillis())));
+        TimeNow();
         lblDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+        getDatafromPieChart();
+    }
+
+    private void TimeNow(){
+        Thread thread = new Thread(() ->{
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            while (!false){
+                try {
+                    Thread.sleep(1000);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+                final String timenow = sdf.format(new Date());
+                Platform.runLater(() ->{
+                    lblTime.setText(timenow);
+                });
+            }
+        });
+        thread.start();
+}
+
+    private void getDatafromPieChart() {
+        TrainModel.getCountTrain();
     }
 }

@@ -28,8 +28,7 @@ public class LoadingFormController implements Initializable {
 
         Timeline timeline = new Timeline();
         KeyFrame keyFrame1 = new KeyFrame(Duration.millis(5000), actionEvent -> {
-            System.out.println("Initializing Application....");
-            System.out.println("Welcome to System v1.0.0");
+            System.out.println("Welcome to System version 1.0");
         });
 
         timeline.getKeyFrames().addAll(keyFrame1);

@@ -1,10 +1,10 @@
 package lk.ijse.dto;
 
-import lk.ijse.dto.Tm.DeliveryTm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +14,6 @@ import java.util.List;
 public class DeliveryDto {
     private String deliveryId;
     private String passengerId;
-    private List<DeliveryTm> deliveryTmList = new ArrayList<>();
+    private LocalDate Date;
+    private List<CartDto2> cartDto2 = new ArrayList<>();
 }

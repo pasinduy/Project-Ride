@@ -14,17 +14,18 @@ public class PlaceDeliveryModel {
     public static boolean placeDelivery(DeliveryDto placeDeliveryDto) throws SQLException, ClassNotFoundException {
         String deliveryId = placeDeliveryDto.getDeliveryId();
         String passengerId = placeDeliveryDto.getPassengerId();
+        String date = String.valueOf(placeDeliveryDto.getDate());
 
         Connection connection = null;
         try {
             connection = DbConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
 
-            boolean isDeliverySaved = DeliveryModel.saveOrder(deliveryId, passengerId);
+            boolean isDeliverySaved = DeliveryModel.saveOrder(deliveryId, passengerId, date);
             if (isDeliverySaved){
-                boolean isUpdated = trainModel.updatesTrains(placeDeliveryDto.getDeliveryTmList());
+                boolean isUpdated = trainModel.updatesTrains(placeDeliveryDto.getCartDto2());
                 if (isUpdated){
-                    boolean isDeliveryDetailSaved = DeliveryDetailModel.saveOrderDetails(placeDeliveryDto.getDeliveryTmList(), deliveryId);
+                    boolean isDeliveryDetailSaved = DeliveryDetailModel.saveOrderDetails(placeDeliveryDto.getCartDto2(), deliveryId);
                     if (isDeliveryDetailSaved){
                         connection.commit();
                     }

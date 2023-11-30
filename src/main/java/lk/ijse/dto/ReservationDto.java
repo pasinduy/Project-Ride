@@ -16,5 +16,5 @@ public class ReservationDto {
     private String reservationId;
     private LocalDate orderDate;
     private String passengerId;
-    private List<ReservationTm> reservationTmList = new ArrayList<>();
+    private List<CartDto> cartDtos = new ArrayList<>();
 }
