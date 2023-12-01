@@ -295,14 +295,10 @@ public class ReservationFormController {
     }
 
     public void btnPrintBillOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("reports/reservation.jrxml");
-        JasperDesign load = JRXmlLoader.load(resourceAsStream);
-        JasperReport jasperReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(
-                jasperReport,
-                null,
-                DbConnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint,false);
+        JasperDesign jasDesign = JRXmlLoader.load("src/main/resources/lk.ijse/reports/reservation.jrxml");
+        JasperReport jasReport = JasperCompileManager.compileReport(jasDesign);
+        JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasPrint, false);
     }
 }
 

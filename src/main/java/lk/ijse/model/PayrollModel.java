@@ -44,7 +44,17 @@ public class PayrollModel {
     public boolean updatePayroll(PayrollDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE payroll SET "
+        String sql = "UPDATE payroll SET employeeId = ?, month = ?, date = ?, status = ?, amount = ? WHERE salaryId = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setObject(1, dto.getEmployeeId());
+        pstm.setObject(2, dto.getMonth());
+        pstm.setObject(3, dto.getDate());
+        pstm.setObject(4, dto.getStatus());
+        pstm.setObject(5, dto.getAmount());
+        pstm.setObject(6, dto.getSalaryId());
+
+        return pstm.executeUpdate() > 0;
     }
 
     public List<PayrollDto> getAllPayroll() throws SQLException {

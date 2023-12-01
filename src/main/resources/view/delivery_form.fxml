@@ -82,12 +82,12 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-        <Label layoutX="916.0" layoutY="971.0" text="Total Of Parcels To be Delivered">
+        <Label layoutX="690.0" layoutY="972.0" text="Total Of Parcels To be Delivered :">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="lblNetTotal" layoutX="1156.0" layoutY="965.0" prefHeight="32.0" prefWidth="129.0" textFill="#b51313">
+        <Label fx:id="lblNetTotal" layoutX="937.0" layoutY="966.0" prefHeight="32.0" prefWidth="129.0" textFill="#b51313">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>
@@ -137,6 +137,11 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+        <JFXButton buttonType="RAISED" layoutX="1220.0" layoutY="942.0" onAction="#btnPrintBillOnAction" prefHeight="74.0" prefWidth="156.0" stylesheets="@../styles/dashboard.css" text="Print Bill" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
       <Line endX="306.0" layoutX="587.0" layoutY="433.0" startX="-99.0" />
       <Line endX="304.0" endY="3.0" layoutX="587.0" layoutY="462.0" startX="-99.0" />
       <Line endX="305.0" layoutX="587.0" layoutY="497.0" startX="-99.0" />

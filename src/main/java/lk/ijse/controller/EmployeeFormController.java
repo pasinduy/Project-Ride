@@ -51,9 +51,9 @@ public class EmployeeFormController {
 
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
         try {
-            List<EmployeeTm> employeeTm = model.getAllEmployees();
+            List<EmployeeDto> employeeDtos = model.getAllEmployees();
 
-            for (EmployeeTm dto : employeeTm) {
+            for (EmployeeDto dto : employeeDtos) {
                 obList.add(
                         new EmployeeTm(
                                 dto.getEmpId(),

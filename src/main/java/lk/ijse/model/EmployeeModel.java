@@ -60,7 +60,7 @@ public class EmployeeModel {
         return false;
     }
 
-    public List<EmployeeTm> getAllEmployees() throws SQLException {
+    public List<EmployeeDto> getAllEmployees() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM employee";

@@ -24,10 +24,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lk.ijse.db.DbConnection;
 import lk.ijse.dto.*;
 import lk.ijse.dto.Tm.DeliveryTm;
 import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.model.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class DeliveryFormController {
 
@@ -274,4 +279,12 @@ public class DeliveryFormController {
         void txtWeightOnAction(ActionEvent event) {
             btnAddToCartOnAction(event);
         }
+
+
+    public void btnPrintBillOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        JasperDesign jasDesign = JRXmlLoader.load("src/main/resources/lk.ijse/reports/delivery.jrxml");
+        JasperReport jasReport = JasperCompileManager.compileReport(jasDesign);
+        JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasPrint, false);
     }
+}
