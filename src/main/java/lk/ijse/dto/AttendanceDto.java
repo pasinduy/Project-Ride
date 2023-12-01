@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AttendanceDto {
     private String attendanceId;
-    private String time;
+    private String empId;
+    private String month;
     private String date;
     private String status;
-    private String empId;
 }
