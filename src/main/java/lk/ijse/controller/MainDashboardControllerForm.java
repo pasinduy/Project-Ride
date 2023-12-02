@@ -17,7 +17,6 @@ public class MainDashboardControllerForm {
     public void initialize() {
         TimeNow();
         lblDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-        getDatafromPieChart();
     }
 
     private void TimeNow(){
@@ -38,7 +37,4 @@ public class MainDashboardControllerForm {
         thread.start();
 }
 
-    private void getDatafromPieChart() {
-        TrainModel.getCountTrain();
-    }
 }
