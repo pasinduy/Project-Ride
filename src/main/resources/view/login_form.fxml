@@ -53,7 +53,7 @@
             <Image url="@../icon/icons8-login-as-user-60.png" />
          </image>
       </ImageView>
-      <JFXPasswordField fx:id="txtPassword" layoutX="619.0" layoutY="516.0" onAction="#txtOnActionLogin" prefHeight="59.0" prefWidth="254.0" stylesheets="@../styles/dashboard.css">
+      <JFXPasswordField fx:id="txtPassword" layoutX="619.0" layoutY="516.0" onAction="#txtOnActionLogin" onKeyPressed="#PressedOnEnter" prefHeight="59.0" prefWidth="254.0" stylesheets="@../styles/dashboard.css">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>

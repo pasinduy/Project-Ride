@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.TrainDto;
@@ -70,6 +71,10 @@ public class LoginFormController {
             if (user.getPassword().equals(txtPassword.getText())) {
                 Stage currentStage = (Stage) root.getScene().getWindow();
                 currentStage.close();
+
+                Stage newStage = new Stage();
+                newStage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml")).load()));
+                newStage.show();
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,"Please Select Username!").show();
@@ -92,5 +97,11 @@ public class LoginFormController {
     public void btnOnActionForgot(ActionEvent actionEvent) throws IOException {
         this.root.getChildren().clear();
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/new_user_form.fxml")));
+    }
+
+    public void PressedOnEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            txtOnActionLogin();
+        }
     }
 }

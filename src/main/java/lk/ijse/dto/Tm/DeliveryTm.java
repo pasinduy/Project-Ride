@@ -15,6 +15,6 @@ public class DeliveryTm {
     private LocalDate date;
     private double weight;
     private double price;
-    private String total;
+    private double total;
     private Button btn;
 }

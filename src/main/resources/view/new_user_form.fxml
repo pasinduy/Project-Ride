@@ -40,7 +40,7 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-      <JFXTextField fx:id="txtPassword" layoutX="624.0" layoutY="441.0" onAction="#EnterOnPassword" prefHeight="56.0" prefWidth="255.0" promptText="Eg : Ab!23" stylesheets="@../styles/dashboard.css">
+      <JFXTextField fx:id="txtPassword" layoutX="624.0" layoutY="441.0" onAction="#EnterOnPassword" prefHeight="56.0" prefWidth="255.0" promptText="Eg : Mixage03!" stylesheets="@../styles/dashboard.css">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>

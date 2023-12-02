@@ -15,7 +15,7 @@ public class EmployeeModel {
     public boolean addEmployee(EmployeeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setObject(1, dto.getEmpId());

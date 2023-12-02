@@ -51,17 +51,15 @@ public class UserModel {
     }
 
     public boolean addUser(UserDto dto) throws SQLException {
-        Connection con = DbConnection.getInstance().getConnection();
-        String sql = "INSERT INTO user VALUES(?,?,?)";
-        try {
-            PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, dto.getEmail());
-            pstm.setString(2, dto.getUsername());
-            pstm.setString(3, dto.getPassword());
+        Connection connection = DbConnection.getInstance().getConnection();
 
-            return pstm.executeUpdate() > 0;
-        } catch (SQLException e) {
-            return false;
-        }
+        String sql = "INSERT INTO user VALUES(?,?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getEmail());
+        pstm.setString(2, dto.getUsername());
+        pstm.setString(3, dto.getPassword());
+
+        return pstm.executeUpdate() > 0;
     }
 }

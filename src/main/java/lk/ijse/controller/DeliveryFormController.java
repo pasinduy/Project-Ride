@@ -17,8 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.InputStream;
-import javafx.scene.control.DatePicker;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,7 +26,6 @@ import javafx.stage.Stage;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.*;
 import lk.ijse.dto.Tm.DeliveryTm;
-import lk.ijse.dto.Tm.ReservationTm;
 import lk.ijse.model.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -165,26 +163,17 @@ public class DeliveryFormController {
             String trainId = cmbTrainId.getValue();
             LocalDate date = LocalDate.parse(lblDate.getText());
             double weight = Double.parseDouble(txtWeight.getText());
-            double price = 0.0;
+            double price = calculateWeightPrice(Double.parseDouble(txtWeight.getText()));
+            double price1 = determinePrice(Double.parseDouble(txtWeight.getText()));
 
-            if(weight <= 1.00) {
-                price = 100 * weight;
-            } else if ((1.00 > weight) && (weight <= 4.00)) {
-                price = 200 * weight;
-            } else if ((4.00 < weight) && (weight <= 10.00)) {
-                price = 300 * weight;
-            } else {
-                price = 400 * weight;
-            }
-
-            String total = price + "";
+            double total = price;
             Button btn = new Button("Remove");
             setRemoveButtonAction(btn, trainId);
             
             if (!obList.isEmpty()) {
                 for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
                     if (colTrainId.getCellData(i).equals(trainId)) {
-                        obList.get(i).setTotal(String.valueOf(Double.parseDouble(total) + Double.parseDouble(colTotal.getCellData(i).toString())));
+                        obList.get(i).setTotal(total + obList.get(i).getTotal());
                         
                         calculateTotal();
                         tblOrderCart.refresh();
@@ -193,7 +182,7 @@ public class DeliveryFormController {
                 }
             }
 
-            var tm = new DeliveryTm(trainId, date, weight, price, total, btn);
+            var tm = new DeliveryTm(trainId, date, weight, price1, total, btn);
 
             obList.add(tm);
 
@@ -201,8 +190,40 @@ public class DeliveryFormController {
             txtWeight.clear();
         }
 
-    private void calculateTotal() {
+        private double calculateWeightPrice(double weight) {
+            double price1 = 0;
+            if(weight <= 1.00) {
+                price1 = 100 * weight;
 
+            } else if ((1.00 > weight) && (weight <= 4.00)) {
+                price1 = 200 * weight;
+            } else if ((4.00 < weight) && (weight <= 10.00)) {
+                price1 = 300 * weight;
+            } else {
+                price1 = 400 * weight;
+            }
+            return price1;
+        }
+
+        private double determinePrice(double weight) {
+            double price = 0;
+            if(weight <= 1.00) {
+                price = 100;
+            } else if ((1.00 > weight) && (weight <= 4.00)) {
+                price = 200;
+            } else if ((4.00 < weight) && (weight <= 10.00)) {
+                price = 300;
+            } else {
+                price = 400;
+            }
+            return price;
+        }
+    private void calculateTotal() {
+        double total = 0;
+        for (int i = 0; i < tblOrderCart.getItems().size(); i++) {
+            DeliveryTm tm = obList.get(i);
+            total += tm.getTotal();
+        }
     }
 
     @FXML

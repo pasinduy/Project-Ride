@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -92,11 +94,6 @@
                 <Font name="System Bold" size="22.0" />
             </font>
         </Label>
-        <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="19.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="66.0" style="-fx-background-color: #bdc3c7;" text="Back">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </JFXButton>
         <Label fx:id="lblDate" layoutX="1061.0" layoutY="138.0" prefHeight="26.0" prefWidth="148.0" textFill="#278d7f">
             <font>
                 <Font name="System Bold" size="17.0" />
@@ -137,7 +134,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-        <JFXButton buttonType="RAISED" layoutX="1220.0" layoutY="942.0" onAction="#btnPrintBillOnAction" prefHeight="74.0" prefWidth="156.0" stylesheets="@../styles/dashboard.css" text="Print Bill" textFill="WHITE">
+        <JFXButton buttonType="RAISED" layoutX="1171.0" layoutY="946.0" onAction="#btnPrintBillOnAction" prefHeight="74.0" prefWidth="156.0" stylesheets="@../styles/dashboard.css" text="Print Bill" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -145,5 +142,14 @@
       <Line endX="306.0" layoutX="587.0" layoutY="433.0" startX="-99.0" />
       <Line endX="304.0" endY="3.0" layoutX="587.0" layoutY="462.0" startX="-99.0" />
       <Line endX="305.0" layoutX="587.0" layoutY="497.0" startX="-99.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="27.0" layoutY="23.0" onAction="#btnBackOnAction" prefHeight="82.0" prefWidth="72.0" text="Back">
+         <graphic>
+            <ImageView fitHeight="64.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-back-button.gif" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
     </children>
 </AnchorPane>

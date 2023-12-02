@@ -22,6 +22,12 @@ public class NewUserController {
     private UserModel model = new UserModel();
 
     public void EnterOnPassword() {
+        txtPassword.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                // Enter key is pressed, perform the login action
+                EnterOnPassword();
+            }
+        });
     }
 
     public void initialize(){
@@ -59,7 +65,7 @@ public class NewUserController {
     private boolean validateInput() {
         boolean matchEmail = Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", txtEmail.getText());
         boolean matchId = Pattern.matches("[U]\\d{3,}", txtUsername.getText());
-        boolean matchPassword = Pattern.matches("^[a-zA-Z]\\w{3,14}$", txtPassword.getText());
+        boolean matchPassword = Pattern.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", txtPassword.getText());
 
         if (!matchEmail) {
             new Alert(Alert.AlertType.ERROR, "Please Enter A Valid Email like \"example@example.com\" ").show();
@@ -72,7 +78,7 @@ public class NewUserController {
         }
 
         if (!matchPassword) {
-            new Alert(Alert.AlertType.ERROR, "The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used").show();
+            new Alert(Alert.AlertType.ERROR, "Has minimum 8 characters in length/n At least one uppercase English letter/n At least one lowercase English letter/n At least one digit/n At least one special character").show();
             return false;
         }
 

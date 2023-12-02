@@ -11,12 +11,12 @@
 
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.MainDashboardControllerForm">
     <children>
-        <Label fx:id="lblTime" layoutX="1340.0" layoutY="6.0" prefHeight="83.0" prefWidth="280.0" style="-fx-background-color: #84bbe1;" stylesheets="@../styles/dashboard.css" textFill="#1e1b1b">
+        <Label fx:id="lblTime" layoutX="1340.0" layoutY="6.0" prefHeight="83.0" prefWidth="280.0" style="-fx-background-color: white;" stylesheets="@../styles/dashboard.css" textFill="#1e1b1b">
             <font>
                 <Font name="System Bold" size="56.0" />
             </font>
         </Label>
-        <Label fx:id="lblDate" layoutY="6.0" prefHeight="83.0" prefWidth="280.0" style="-fx-background-color: #84bbe1;" textFill="#221d1d">
+        <Label fx:id="lblDate" layoutY="6.0" prefHeight="83.0" prefWidth="317.0" style="-fx-background-color: white;" textFill="#221d1d">
             <font>
                 <Font name="System Bold" size="55.0" />
             </font>
