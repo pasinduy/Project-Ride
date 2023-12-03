@@ -3,6 +3,7 @@ package lk.ijse.model;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.ReservationDto;
+import lk.ijse.util.CrudUtil;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -34,15 +35,8 @@ public class ReservationModel {
         }
     }
 
-    public static boolean saveOrder(String reservationId, String passengerId, LocalDate date) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "INSERT INTO reservation VALUES(?, ?, ?)";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, reservationId);
-        pstm.setString(2, passengerId);
-        pstm.setDate(3, Date.valueOf(date));
-
-        return pstm.executeUpdate() > 0;
+    public static boolean saveOrder(String reservationId, String passengerId, LocalDate date) throws SQLException, ClassNotFoundException {
+        boolean execute = CrudUtil.execute("INSERT INTO reservation VALUES(?, ?, ?)", reservationId, passengerId, Date.valueOf(date));
+        return execute;
     }
 }

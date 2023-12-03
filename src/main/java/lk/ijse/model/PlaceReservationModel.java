@@ -24,17 +24,19 @@ public class PlaceReservationModel {
             connection.setAutoCommit(false);
 
             boolean isReservationSaved = ReservationModel.saveOrder(reservationId, passengerId, orderDate);
-            if (isReservationSaved){
-                /*boolean isUpdated = trainModel.updateTrains(placeReservationDto.getReservationTmList());
-                if (isUpdated){
-                    boolean isReservationDetailSaved = reservationDetailModel.saveOrderDetails(placeReservationDto.getReservationTmList(), reservationId);
-                    if (isReservationDetailSaved){
-                        connection.commit();
-                    }
-                }*/
+            if (!isReservationSaved){
+              connection.rollback();
+               return false;
+            }
+            TrainModel trainModel1 = new TrainModel();
+            boolean b = trainModel1.updateTrains(placeReservationDto.getCartDtos());
+            if (!b) {
+                connection.rollback();
+                return false;
             }
         } catch (SQLException e) {
             connection.rollback();
+            return false;
         } finally {
             connection.setAutoCommit(true);
         }

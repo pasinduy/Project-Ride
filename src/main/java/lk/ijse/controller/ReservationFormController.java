@@ -300,5 +300,16 @@ public class ReservationFormController {
         JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, null, DbConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasPrint, false);
     }
+
+    public void btnCheckSchedule(ActionEvent actionEvent) throws IOException {
+        Parent anchorPane = FXMLLoader.load(getClass().getResource("/view/schedule_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+
+        Stage stage = new Stage();
+        stage.setTitle("Schedule Viewer");
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
 }
 

@@ -52,13 +52,6 @@ public class LoginFormController {
 
     @FXML
     public void initialize() {
-        // Add an event handler to the password field
-        txtPassword.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                // Enter key is pressed, perform the login action
-                txtOnActionLogin();
-            }
-        });
         loadId();
     }
 

@@ -140,5 +140,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="704.0" layoutY="304.0" onAction="#btnCheckSchedule" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #2ecc71;" text="Schedule" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

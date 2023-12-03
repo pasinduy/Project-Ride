@@ -81,7 +81,7 @@ public class EmployeeFormController {
     }
 
     private void setCellValueFactory() {
-        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("empId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
