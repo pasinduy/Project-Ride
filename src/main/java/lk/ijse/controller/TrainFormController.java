@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,6 +31,7 @@ public class TrainFormController {
     public TableColumn colStatus;
     public TableColumn colPrice;
     public JFXTextField txtPrice;
+    public Label countTrain;
 
     public void initialize(){
         setCellValueFactory();

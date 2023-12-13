@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AttendanceFormController">
 
     <children>
@@ -34,6 +35,11 @@
                 <TableColumn fx:id="colStatus" prefWidth="286.0" text="Work Status" />
             </columns>
         </TableView>
+        <Label layoutX="741.0" layoutY="31.0" prefHeight="42.0" prefWidth="219.0" text="Attendance Form" textFill="#5e5c5c">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
         <JFXButton buttonType="RAISED" layoutX="1353.0" layoutY="121.0" onAction="#btnOnActionAdd" prefHeight="75.0" prefWidth="200.0" stylesheets="@../styles/dashboard.css" text="Add" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="18.0" />

@@ -170,7 +170,7 @@ public class PayrollFormController {
     }
 
     private void setCellValueFactory() {
-        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
         colSalaryID.setCellValueFactory(new PropertyValueFactory<>("salaryId"));
         colMonth.setCellValueFactory(new PropertyValueFactory<>("month"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));

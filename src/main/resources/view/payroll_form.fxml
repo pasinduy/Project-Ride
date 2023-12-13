@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1620.0" style="-fx-background-color: #84bbe1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PayrollFormController">
 
     <children>
@@ -89,6 +90,11 @@
             </image>
         </ImageView>
       <JFXTextField fx:id="txtAmount" layoutX="956.0" layoutY="388.0" prefHeight="50.0" prefWidth="250.0" promptText="Amount" stylesheets="@../styles/dashboard.css" />
+        <Label layoutX="741.0" layoutY="31.0" prefHeight="42.0" prefWidth="219.0" text="Payroll Form" textFill="#5e5c5c">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
     </children>
 
 </AnchorPane>
