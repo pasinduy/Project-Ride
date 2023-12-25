@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class TrainBOImpl {
+import lk.ijse.bo.custom.TrainBO;
+
+public class TrainBOImpl implements TrainBO {
 }

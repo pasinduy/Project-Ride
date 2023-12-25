@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class AttendanceBOImpl {
+import lk.ijse.bo.custom.AttendanceBO;
+
+public class AttendanceBOImpl implements AttendanceBO {
 }

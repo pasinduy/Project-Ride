@@ -1,4 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
-public class TrainDAOImpl {
+import lk.ijse.dao.custom.TrainDAO;
+
+public class TrainDAOImpl implements TrainDAO {
 }

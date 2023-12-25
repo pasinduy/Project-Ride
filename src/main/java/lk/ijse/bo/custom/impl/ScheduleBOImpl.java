@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class ScheduleBOImpl {
+import lk.ijse.bo.custom.ScheduleBO;
+
+public class ScheduleBOImpl implements ScheduleBO {
 }

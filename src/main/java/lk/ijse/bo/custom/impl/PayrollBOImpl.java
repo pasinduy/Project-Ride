@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class PayrollBOImpl {
+import lk.ijse.bo.custom.PayrollBO;
+
+public class PayrollBOImpl implements PayrollBO {
 }

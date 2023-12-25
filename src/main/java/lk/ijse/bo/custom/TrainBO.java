@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom;
 
-public interface TrainBO {
+import lk.ijse.bo.SuperBO;
+
+public interface TrainBO extends SuperBO {
 }

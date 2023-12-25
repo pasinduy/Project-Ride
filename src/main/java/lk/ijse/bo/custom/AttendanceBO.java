@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom;
 
-public interface AttendanceBO {
+import lk.ijse.bo.SuperBO;
+
+public interface AttendanceBO extends SuperBO {
 }

@@ -1,4 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
-public class AttendanceDAOImpl {
+import lk.ijse.dao.custom.AttendanceDAO;
+
+public class AttendanceDAOImpl implements AttendanceDAO {
 }

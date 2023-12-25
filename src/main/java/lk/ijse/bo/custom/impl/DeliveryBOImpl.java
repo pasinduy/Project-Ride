@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class DeliveryBOImpl {
+import lk.ijse.bo.custom.DeliveryBO;
+
+public class DeliveryBOImpl implements DeliveryBO {
 }

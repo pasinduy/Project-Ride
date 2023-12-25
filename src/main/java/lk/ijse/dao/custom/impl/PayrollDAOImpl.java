@@ -1,4 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
-public class PayrollDAOImpl {
+import lk.ijse.dao.custom.PayrollDAO;
+
+public class PayrollDAOImpl implements PayrollDAO {
 }

@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom;
 
-public interface PayrollBO {
+import lk.ijse.bo.SuperBO;
+
+public interface PayrollBO extends SuperBO {
 }

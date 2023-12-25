@@ -1,4 +1,8 @@
 package lk.ijse.dao.custom;
 
-public interface TrainDAO {
+import lk.ijse.dao.CrudDAO;
+import lk.ijse.dao.SuperDAO;
+import lk.ijse.dto.TrainDto;
+
+public interface TrainDAO extends CrudDAO<TrainDto> {
 }

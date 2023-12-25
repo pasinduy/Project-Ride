@@ -1,4 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
-public class DeliveryDetailDAOImpl {
+import lk.ijse.dao.custom.DeliveryDetailDAO;
+
+public class DeliveryDetailDAOImpl implements DeliveryDetailDAO {
 }
