@@ -12,11 +12,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dao.custom.AttendanceDAO;
+import lk.ijse.dao.custom.impl.AttendanceDAOImpl;
 import lk.ijse.dto.AttendanceDto;
 import lk.ijse.dto.Tm.AttendanceTm;
 import lk.ijse.model.AttendanceModel;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AttendanceFormController {
@@ -56,6 +60,8 @@ public class AttendanceFormController {
     @FXML
     private TableColumn<?, ?> colStatus;
 
+    AttendanceDAO dao = new AttendanceDAOImpl();
+
     @FXML
     void btnOnActionBack(ActionEvent event) throws IOException {
         this.root.getChildren().clear();
@@ -86,24 +92,13 @@ public class AttendanceFormController {
     }
 
     private void loadAllAttendance() {
-        String attId = txtAttendanceID.getText();
-
-        ObservableList<AttendanceTm> observableList = FXCollections.observableArrayList();
+        tblAttendance.getItems().clear();
         try{
-            List<AttendanceDto> dtoList = new AttendanceModel().getAllAttendance();
+            ArrayList<AttendanceDto> allAttendance = dao.getAll();
 
-            for (AttendanceDto dto : dtoList) {
-                observableList.add(
-                        new AttendanceTm(
-                                dto.getAttendanceId(),
-                                dto.getEmpId(),
-                                dto.getMonth(),
-                                dto.getDate(),
-                                dto.getStatus()
-                        )
-                );
+            for(AttendanceDto a : allAttendance){
+                tblAttendance.getItems().add(new AttendanceTm(a.getAttendanceId(), a.getEmpId(), a.getMonth(), a.getDate(), a.getStatus()));
             }
-            tblAttendance.setItems(observableList);
         } catch (Exception e){
             throw new RuntimeException(e);
         }

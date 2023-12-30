@@ -1,12 +1,13 @@
 package lk.ijse.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Attendance {
     private String attId;
     private String empId;
     private String month;
-    private LocalDate date;
+    private String date;
     private String status;
 
     @Override
@@ -23,7 +24,7 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(String attId, String empId, String month, LocalDate date, String status) {
+    public Attendance(String attId, String empId, String month, String date, String status) {
         this.attId = attId;
         this.empId = empId;
         this.month = month;
@@ -55,11 +56,11 @@ public class Attendance {
         this.month = month;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
