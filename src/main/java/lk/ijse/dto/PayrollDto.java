@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PayrollDto {
+public class PayrollDto implements Serializable {
     private String employeeId;
     private String salaryId;
     private String month;

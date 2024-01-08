@@ -22,4 +22,29 @@ public class AttendanceBOImpl implements AttendanceBO {
         }
         return dtos;
     }
+
+    @Override
+    public boolean save(AttendanceDto dto) throws SQLException, ClassNotFoundException {
+        return dao.save(new AttendanceDto(dto.getAttendanceId(), dto.getEmpId(), dto.getMonth(), dto.getDate(), dto.getStatus()));
+    }
+
+    @Override
+    public boolean update(AttendanceDto dto) throws SQLException, ClassNotFoundException {
+        return dao.update(new AttendanceDto(dto.getAttendanceId(), dto.getEmpId(), dto.getMonth(), dto.getDate(), dto.getStatus()));
+    }
+
+    @Override
+    public boolean delete(AttendanceDto dto) throws SQLException, ClassNotFoundException {
+        return dao.delete(new AttendanceDto(dto.getAttendanceId(), dto.getEmpId(), dto.getMonth(), dto.getDate(), dto.getStatus()));
+    }
+
+    @Override
+    public boolean existRecord(String id) throws SQLException, ClassNotFoundException {
+        return dao.existRecord(id);
+    }
+
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return dao.getNextID();
+    }
 }

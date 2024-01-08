@@ -2,12 +2,14 @@ package lk.ijse.dto;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class TrainDto {
+public class TrainDto implements Serializable {
     private String trainId;
     private String type;
     private String noOfSeats;

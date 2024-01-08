@@ -3,6 +3,7 @@ package lk.ijse.dto;
 import lk.ijse.dto.Tm.ReservationTm;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ReservationDto {
+public class ReservationDto implements Serializable {
     private String reservationId;
     private LocalDate orderDate;
     private String passengerId;
